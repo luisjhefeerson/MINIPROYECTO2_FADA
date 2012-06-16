@@ -4,3 +4,5 @@
 *.jar
 *.war
 *.ear
+/MINIPROYECTO2_FADA/nbproject/private/
+/*~
