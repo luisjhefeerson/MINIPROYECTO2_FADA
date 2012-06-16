@@ -17,6 +17,7 @@ public class Celda {
         this.costo = costo;
         this.k = k;
     }
+  
 
     /**
      * Get the value of k
