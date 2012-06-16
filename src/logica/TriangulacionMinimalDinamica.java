@@ -4,10 +4,15 @@
  */
 package logica;
 
+import java.awt.Point;
+
 /**
  *
  * @author gadolforl
  */
 public class TriangulacionMinimalDinamica {
+    
+    Point[] Vertices;
+    
     
 }
