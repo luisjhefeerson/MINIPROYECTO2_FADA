@@ -46,8 +46,15 @@ public class TriangulacionMinimalDinamica {
     }
 
     public double Distancia(Vertice vertice1, Vertice vertice2) {
-
-        return 0;
+        double d;
+        Vertice v1=vertice1;
+        Vertice v2=vertice2;
+        if( (v1.getI()+1)==v2.getI() || (v2.getI()+1)==v1.getI() || (v1.getI()==vertices.length&&v2.getI()==0) || (v2.getI()==vertices.length&&v1.getI()==0)){
+            return d=0;
+        }else{
+            d=Math.sqrt(Math.pow(v1.getX()-v2.getX(),2)+Math.pow(v1.getY()-v2.getY(),2));
+            return d;
+        }
     }
 
     //<editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
