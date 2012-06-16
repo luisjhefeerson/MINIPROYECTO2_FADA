@@ -6,6 +6,7 @@ package logica;
 
 import java.awt.Point;
 
+
 /**
  *
  * @author gadolforl
@@ -76,5 +77,21 @@ public class TriangulacionMinimalDinamica {
      */
     public void setVertices(Point[] vertices) {
         this.vertices = vertices;
+    }
+    
+    public double Distancia(Point vertice1, Point vertice2,int ka){
+        
+        double d;
+        Point v1=vertice1;
+        Point v2=vertice2;
+        int k=ka;
+        if(k==1 || k=s-2){
+            d=0;
+        }else{
+            
+        }
+        
+        
+        return d;
     }
 }
