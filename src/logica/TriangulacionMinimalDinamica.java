@@ -27,9 +27,13 @@ public class TriangulacionMinimalDinamica {
         matrizCostos = new Celda[nVertices - 1][nVertices];
 
         // Llenar las dos ultimas filas con cero
-        for (int i = nVertices-3; i < nVertices - 1; i++) {
+        for (int i = 0; i < nVertices - 1; i++) {
             for (int j = 0; j < nVertices; j++) {
-                matrizCostos[i][j] = new Celda(0, -1);
+                if (i>=nVertices-3) {
+                    matrizCostos[i][j] = new Celda(0, -1);
+                }else{
+                    matrizCostos[i][j] = new Celda(-1, -1);
+                }
             }
         }
 
@@ -37,12 +41,9 @@ public class TriangulacionMinimalDinamica {
 
     public double calcularTriangulacion(int i, int s) {
 
-        if (/* matrizCostos[s-2][i]*/true) {
-            
+        if (matrizCostos[s-2][i].getCosto()!=-1) {
             return matrizCostos[s - 2][i].getCosto();
-            
         } else {
-            
             Celda minimo = new Celda(100000000, -1);
             for (int k = 1; k <= s - 2; k++) {
                 double costo = calcularTriangulacion(i, k + 1)
@@ -54,20 +55,19 @@ public class TriangulacionMinimalDinamica {
                     minimo = new Celda(costo, k);
                 }
             }
-            matrizCostos[s - 2][i]=minimo;
+            matrizCostos[s - 2][i] = minimo;
             return minimo.getCosto();
         }
-
     }
 
     public double Distancia(Vertice vertice1, Vertice vertice2) {
-        double d=0;
-        Vertice v1=vertice1;
-        Vertice v2=vertice2;
-        if( (v1.getI()+1)==v2.getI() || (v2.getI()+1)==v1.getI() || (v1.getI()==vertices.length&&v2.getI()==0) || (v2.getI()==vertices.length&&v1.getI()==0)){
+        double d = 0;
+        Vertice v1 = vertice1;
+        Vertice v2 = vertice2;
+        if ((v1.getI() + 1) == v2.getI() || (v2.getI() + 1) == v1.getI() || (v1.getI() == vertices.length && v2.getI() == 0) || (v2.getI() == vertices.length && v1.getI() == 0)) {
             return d;
-        }else{
-            d=Math.sqrt(Math.pow(v1.getX()-v2.getX(),2)+Math.pow(v1.getY()-v2.getY(),2));
+        } else {
+            d = Math.sqrt(Math.pow(v1.getX() - v2.getX(), 2) + Math.pow(v1.getY() - v2.getY(), 2));
             return d;
         }
     }
