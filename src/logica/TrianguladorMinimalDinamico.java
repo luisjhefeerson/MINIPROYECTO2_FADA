@@ -10,12 +10,12 @@ import java.awt.Point;
  *
  * @author gadolforl
  */
-public class TriangulacionMinimalDinamica {
+public class TrianguladorMinimalDinamico {
 
     private Celda[][] matrizCostos;
     private Poligono poligono;
 
-    public TriangulacionMinimalDinamica(Poligono poligono) {
+    public TrianguladorMinimalDinamico(Poligono poligono) {
 
         this.poligono = poligono;
 
