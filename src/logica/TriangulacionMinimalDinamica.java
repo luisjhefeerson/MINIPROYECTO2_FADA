@@ -21,10 +21,34 @@ public class TriangulacionMinimalDinamica {
     }
 
     public TriangulacionMinimalDinamica(Point[] vertices, int nVertices) {
+        
         this.vertices = vertices;
         this.nVertices = nVertices;
+        
+        matrizCostos = new Celda[nVertices-1][nVertices];
+        
+        // Llenar las dos ultimas filas con cero
+        for (int i = nVertices-3; i < nVertices-1; i++) {
+            for (int j = 0; j < nVertices; j++) {
+                matrizCostos[i][j]= new Celda(0,-1);
+            }
+        }
+        
     }
 
+    public double calcularTriangulacion(int i, int s){
+        
+        Celda[] costosParciales = new Celda[s-2];
+        for (int k = 1; k <= s-2; k++) {
+            
+            
+        }
+        
+        
+        return 0;
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
     /**
      * Get the value of matrizCostos
      *
