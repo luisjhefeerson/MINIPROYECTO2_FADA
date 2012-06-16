@@ -6,48 +6,50 @@ package logica;
 
 import java.awt.Point;
 
-
 /**
  *
  * @author gadolforl
  */
 public class TriangulacionMinimalDinamica {
 
-    private Point[] vertices;
     private int nVertices;
     private Celda[][] matrizCostos;
+    private Vertice[] vertices;
 
     public TriangulacionMinimalDinamica() {
     }
 
-    public TriangulacionMinimalDinamica(Point[] vertices, int nVertices) {
-        
+    public TriangulacionMinimalDinamica(Vertice[] vertices, int nVertices) {
+
         this.vertices = vertices;
         this.nVertices = nVertices;
-        
-        matrizCostos = new Celda[nVertices-1][nVertices];
-        
+
+        matrizCostos = new Celda[nVertices - 1][nVertices];
+
         // Llenar las dos ultimas filas con cero
-        for (int i = nVertices-3; i < nVertices-1; i++) {
+        for (int i = nVertices - 3; i < nVertices - 1; i++) {
             for (int j = 0; j < nVertices; j++) {
-                matrizCostos[i][j]= new Celda(0,-1);
+                matrizCostos[i][j] = new Celda(0, -1);
             }
         }
-        
+
     }
 
-    public double calcularTriangulacion(int i, int s){
-        
-        Celda[] costosParciales = new Celda[s-2];
-        for (int k = 1; k <= s-2; k++) {
-            
-            
+    public double calcularTriangulacion(int i, int s) {
+
+        Celda[] costosParciales = new Celda[s - 2];
+        for (int k = 1; k <= s - 2; k++) {
         }
-        
-        
+
+
         return 0;
     }
-    
+
+    public double Distancia(Vertice vertice1, Vertice vertice2) {
+
+        return 0;
+    }
+
     //<editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
     /**
      * Get the value of matrizCostos
@@ -90,7 +92,7 @@ public class TriangulacionMinimalDinamica {
      *
      * @return the value of vertices
      */
-    public Point[] getVertices() {
+    public Vertice[] getVertices() {
         return vertices;
     }
 
@@ -99,23 +101,8 @@ public class TriangulacionMinimalDinamica {
      *
      * @param vertices new value of vertices
      */
-    public void setVertices(Point[] vertices) {
+    public void setVertices(Vertice[] vertices) {
         this.vertices = vertices;
     }
-    
-    public double Distancia(Point vertice1, Point vertice2,int ka){
-        
-        double d;
-        Point v1=vertice1;
-        Point v2=vertice2;
-        int k=ka;
-        if(k==1 || k=s-2){
-            d=0;
-        }else{
-            
-        }
-        
-        
-        return d;
-    }
+    //</editor-fold>
 }
