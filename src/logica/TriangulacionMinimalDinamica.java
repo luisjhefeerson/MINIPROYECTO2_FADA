@@ -27,7 +27,7 @@ public class TriangulacionMinimalDinamica {
         matrizCostos = new Celda[nVertices - 1][nVertices];
 
         // Llenar las dos ultimas filas con cero
-        for (int i = nVertices - 3; i < nVertices - 1; i++) {
+        for (int i = nVertices-3; i < nVertices - 1; i++) {
             for (int j = 0; j < nVertices; j++) {
                 matrizCostos[i][j] = new Celda(0, -1);
             }
@@ -37,12 +37,27 @@ public class TriangulacionMinimalDinamica {
 
     public double calcularTriangulacion(int i, int s) {
 
-        Celda[] costosParciales = new Celda[s - 2];
-        for (int k = 1; k <= s - 2; k++) {
+        if (/* matrizCostos[s-2][i]*/true) {
+            
+            return matrizCostos[s - 2][i].getCosto();
+            
+        } else {
+            
+            Celda minimo = new Celda(100000000, -1);
+            for (int k = 1; k <= s - 2; k++) {
+                double costo = calcularTriangulacion(i, k + 1)
+                        + calcularTriangulacion(i + k, s - k)
+                        + Distancia(vertices[i], vertices[i + k])
+                        + Distancia(vertices[i + k], vertices[i + s - 1]);
+
+                if (costo < minimo.getCosto()) {
+                    minimo = new Celda(costo, k);
+                }
+            }
+            matrizCostos[s - 2][i]=minimo;
+            return minimo.getCosto();
         }
 
-
-        return 0;
     }
 
     public double Distancia(Vertice vertice1, Vertice vertice2) {
