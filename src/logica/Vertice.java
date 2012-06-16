@@ -11,6 +11,12 @@ import java.awt.Point;
  * @author gadolforl
  */
 public class Vertice extends Point{
+
+    public Vertice(int i, int x, int y) {
+        super(x, y);
+        this.i = i;
+    }
+ 
     
     private int i;
 
