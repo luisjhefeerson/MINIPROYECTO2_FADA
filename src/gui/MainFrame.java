@@ -78,7 +78,6 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMICargarTablero = new javax.swing.JMenuItem();
-        jMenuGuardar = new javax.swing.JMenuItem();
         jMISalir = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMIAcercaDe = new javax.swing.JMenuItem();
@@ -109,7 +108,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelSubtitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubtitulo.setText("MINIPROYECTO 2 - SOLUCIÓN PARA UN JUEGO DE LÓGICA");
+        jLabelSubtitulo.setText("MINIPROYECTO 2 - PROGRAMACIÓN DINÁMICA Y VORAZ");
         jPanelPrincipal.add(jLabelSubtitulo);
         jLabelSubtitulo.setBounds(90, 20, 808, 30);
 
@@ -162,21 +161,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuArchivo.setText("Archivo");
 
-        jMICargarTablero.setText("Cargar Tablero");
+        jMICargarTablero.setText("Cargar Poligono");
         jMICargarTablero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMICargarTableroActionPerformed(evt);
             }
         });
         jMenuArchivo.add(jMICargarTablero);
-
-        jMenuGuardar.setText("Guardar Partida");
-        jMenuGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuGuardarActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jMenuGuardar);
 
         jMISalir.setText("Salir");
         jMISalir.addActionListener(new java.awt.event.ActionListener() {
@@ -274,29 +265,8 @@ public class MainFrame extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jMenuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGuardarActionPerformed
-//        JFileChooser selectorArchivo = new JFileChooser("./tests/");
-//        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
-//
-//        selectorArchivo.setFileFilter(filter);
-//        selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-//
-//        int resultado = selectorArchivo.showSaveDialog(this);
-//
-//        if (resultado != JFileChooser.CANCEL_OPTION) {
-//            File selectedFile = new File(selectorArchivo.getSelectedFile().getAbsolutePath() + ".txt");
-//
-//            akariGame.saveToFile(selectedFile);
-//        }
-    }//GEN-LAST:event_jMenuGuardarActionPerformed
-
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+
         int[] Cx= new int [5];
         int[] Cy= new int [5];
         Cx[0]=30;
@@ -309,7 +279,9 @@ public class MainFrame extends javax.swing.JFrame {
         Cy[2]=70;
         Cy[3]=45;
         Cy[4]=30;
+        
         GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, Cx, Cy);
+        
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     /**
@@ -375,7 +347,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenuItem jMenuGuardar;
     private javax.swing.JPanel jPanelGraphiclView;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JScrollPane jScrollPaneTextView;

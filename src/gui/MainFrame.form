@@ -11,18 +11,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMICargarTablero">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cargar Tablero"/>
+                <Property name="text" type="java.lang.String" value="Cargar Poligono"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICargarTableroActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuGuardar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Guardar Partida"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuGuardarActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMISalir">
@@ -146,7 +138,7 @@
               <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="MINIPROYECTO 2 - SOLUCI&#xd3;N PARA UN JUEGO DE L&#xd3;GICA"/>
+            <Property name="text" type="java.lang.String" value="MINIPROYECTO 2 - PROGRAMACI&#xd3;N DIN&#xc1;MICA Y VORAZ"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

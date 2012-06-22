@@ -12,8 +12,6 @@ import java.awt.Graphics;
  */
 public class GraficarPoligono {
 
-   
-
     public GraficarPoligono() {
     }
 
