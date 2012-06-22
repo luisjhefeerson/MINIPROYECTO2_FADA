@@ -146,7 +146,7 @@
               <Font name="Trebuchet MS" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="MINIPROYECTO 1 - SOLUCI&#xd3;N PARA UN JUEGO DE L&#xd3;GICA"/>
+            <Property name="text" type="java.lang.String" value="MINIPROYECTO 2 - SOLUCI&#xd3;N PARA UN JUEGO DE L&#xd3;GICA"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -160,7 +160,7 @@
               <Font name="Trebuchet MS" size="50" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="AKARI"/>
+            <Property name="text" type="java.lang.String" value="TRIANGULACI&#xd3;N DE POLINOMIOS"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

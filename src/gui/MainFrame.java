@@ -27,15 +27,11 @@
 //**********************************************************
 package gui;
 
-import gui.Poligono;
-import java.awt.Color;
+
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import logica.Poligono;
 
 /**
  * Class description
@@ -113,13 +109,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelSubtitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubtitulo.setText("MINIPROYECTO 1 - SOLUCIÓN PARA UN JUEGO DE LÓGICA");
+        jLabelSubtitulo.setText("MINIPROYECTO 2 - SOLUCIÓN PARA UN JUEGO DE LÓGICA");
         jPanelPrincipal.add(jLabelSubtitulo);
         jLabelSubtitulo.setBounds(90, 20, 808, 30);
 
         jLabelSubtitulo1.setFont(new java.awt.Font("Trebuchet MS", 1, 50)); // NOI18N
         jLabelSubtitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubtitulo1.setText("AKARI");
+        jLabelSubtitulo1.setText("TRIANGULACIÓN DE POLINOMIOS");
         jPanelPrincipal.add(jLabelSubtitulo1);
         jLabelSubtitulo1.setBounds(90, 45, 808, 50);
 
