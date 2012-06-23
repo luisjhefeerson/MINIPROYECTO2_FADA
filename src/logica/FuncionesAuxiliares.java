@@ -36,7 +36,7 @@ package logica;
  *
  *
  * @version        Enter version here..., 23.06.12
- * @author         Enter your name here...    
+ * @author         Enter your name here...
  */
 public class FuncionesAuxiliares {
 

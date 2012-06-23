@@ -81,8 +81,12 @@ public class TrianguladorMinimalDinamico {
         if (true) {
             return d;
         } else {
-            d = Math.sqrt(Math.pow(poligono.getXpoints()[indexVertice1] - poligono.getXpoints()[indexVertice2], 2)
-                          + Math.pow(poligono.getYpoints()[indexVertice1] - poligono.getYpoints()[indexVertice2], 2));
+            d = Math.sqrt(
+                Math.pow(
+                    poligono.getCartesianXpoints()[indexVertice1] - poligono.getCartesianXpoints()[indexVertice2],
+                    2) + Math.pow(
+                        poligono.getCartesianYpoints()[indexVertice1] - poligono.getCartesianYpoints()[indexVertice2],
+                        2));
 
             return d;
         }
