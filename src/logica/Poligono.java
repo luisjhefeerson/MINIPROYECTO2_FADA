@@ -71,7 +71,10 @@ public class Poligono extends Polygon {
         this.npoints          = npoints;
         this.cartesianXpoints = cartesianXpoints;
         this.cartesianYpoints = cartesianYpoints;
+        convertirPuntosCartesianos();
+    }
 
+    private void convertirPuntosCartesianos() {
         // Encontrar el Xmin y el Y max
         int xMin = FuncionesAuxiliares.getMinValue(cartesianXpoints);
         int yMax = FuncionesAuxiliares.getMaxValue(cartesianYpoints);
@@ -126,8 +129,8 @@ public class Poligono extends Polygon {
         StringTokenizer tokens = new StringTokenizer(textoEnArchivo);
 
         npoints = tokens.countTokens() / 2;
-        xpoints = new int[npoints];
-        ypoints = new int[npoints];
+        cartesianXpoints = new int[npoints];
+        cartesianYpoints = new int[npoints];
 
         try {
             int[] x = new int[tokens.countTokens()];
@@ -143,13 +146,16 @@ public class Poligono extends Polygon {
 
             for (int i = 0; i < x.length; i++) {
                 if ((i % 2) == 0) {
-                    xpoints[w] = x[i];
+                    cartesianXpoints[w] = x[i];
                     w++;
                 } else {
-                    ypoints[j] = x[i];
+                    cartesianYpoints[j] = x[i];
                     j++;
                 }
             }
+            
+            convertirPuntosCartesianos();
+            
         } catch (Exception e) {
             System.err.println("no cargo archivo" + e);
 
