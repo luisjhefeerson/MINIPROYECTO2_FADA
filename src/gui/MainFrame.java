@@ -29,10 +29,13 @@
 //*************************************************************
 package gui;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import logica.Poligono;
+import logica.TrianguladorMinimalDinamico;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -61,6 +64,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelGraphiclView = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabelTextView1 = new javax.swing.JLabel();
+        jButtonDinamico = new javax.swing.JButton();
+        jLabelResultado = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMICargarPoligono = new javax.swing.JMenuItem();
@@ -132,7 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
 
         jPanelPrincipal.add(jScrollPanelGraphView);
-        jScrollPanelGraphView.setBounds(420, 50, 560, 520);
+        jScrollPanelGraphView.setBounds(420, 50, 560, 490);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator3);
@@ -143,6 +148,22 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelTextView1.setText("OPCIONES");
         jPanelPrincipal.add(jLabelTextView1);
         jLabelTextView1.setBounds(0, 110, 200, 30);
+
+        jButtonDinamico.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonDinamico.setText("Dinamico");
+        jButtonDinamico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDinamicoActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonDinamico);
+        jButtonDinamico.setBounds(30, 150, 150, 31);
+
+        jLabelResultado.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
+        jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL:");
+        jPanelPrincipal.add(jLabelResultado);
+        jLabelResultado.setBounds(420, 550, 560, 30);
 
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
@@ -242,6 +263,14 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMICargarPoligonoActionPerformed
 
+    private void jButtonDinamicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamicoActionPerformed
+      
+        
+        TrianguladorMinimalDinamico trianDinamico= new TrianguladorMinimalDinamico(poligono);
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: "+trianDinamico.calcularTriangulacion(0, poligono.npoints));
+        
+    }//GEN-LAST:event_jButtonDinamicoActionPerformed
+
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
@@ -256,6 +285,8 @@ public class MainFrame extends javax.swing.JFrame {
             xPoints[i] = poligono.getXpoints()[i] + initialX;
         }
         jPanelGraphiclView.getGraphics().drawPolygon(xPoints, yPoints, poligono.getNpoints());
+        jPanelGraphiclView.getGraphics().drawString("Hola", 0, 0);
+        
     }
 
     public static void main(String args[]) {
@@ -289,7 +320,9 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDinamico;
     private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelResultado;
     private javax.swing.JLabel jLabelSubtitulo;
     private javax.swing.JLabel jLabelSubtitulo1;
     private javax.swing.JLabel jLabelTextView;
