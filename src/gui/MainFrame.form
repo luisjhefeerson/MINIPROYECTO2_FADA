@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Archivo"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMICargarTablero">
+            <MenuItem class="javax.swing.JMenuItem" name="jMICargarPoligono">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cargar Poligono"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICargarTableroActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICargarPoligonoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMISalir">
@@ -191,7 +191,7 @@
         <Container class="javax.swing.JScrollPane" name="jScrollPaneTextView">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="145" width="280" height="380"/>
+              <AbsoluteConstraints x="10" y="145" width="140" height="380"/>
             </Constraint>
           </Constraints>
 
