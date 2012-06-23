@@ -76,6 +76,8 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPanelGraphView = new javax.swing.JScrollPane();
         jPanelGraphiclView = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabelTextView1 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMICargarPoligono = new javax.swing.JMenuItem();
@@ -93,43 +95,45 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/UNIVALLE.jpg"))); // NOI18N
         jPanelPrincipal.add(jLabelLogo);
-        jLabelLogo.setBounds(50, 10, 58, 80);
+        jLabelLogo.setBounds(10, 10, 58, 80);
         jPanelPrincipal.add(jSeparator1);
-        jSeparator1.setBounds(0, 95, 900, 5);
+        jSeparator1.setBounds(0, 100, 400, 5);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator2);
-        jSeparator2.setBounds(300, 105, 5, 480);
+        jSeparator2.setBounds(400, 0, 6, 600);
 
-        jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitulo.setText("FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS");
         jPanelPrincipal.add(jLabelTitulo);
-        jLabelTitulo.setBounds(90, 0, 808, 30);
+        jLabelTitulo.setBounds(70, 10, 330, 20);
 
-        jLabelSubtitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabelSubtitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabelSubtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSubtitulo.setText("MINIPROYECTO 2 - PROGRAMACIÓN DINÁMICA Y VORAZ");
         jPanelPrincipal.add(jLabelSubtitulo);
-        jLabelSubtitulo.setBounds(90, 20, 808, 30);
+        jLabelSubtitulo.setBounds(70, 30, 330, 20);
 
-        jLabelSubtitulo1.setFont(new java.awt.Font("Trebuchet MS", 1, 50)); // NOI18N
+        jLabelSubtitulo1.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelSubtitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSubtitulo1.setText("TRIANGULACIÓN DE POLINOMIOS");
         jPanelPrincipal.add(jLabelSubtitulo1);
-        jLabelSubtitulo1.setBounds(90, 45, 808, 50);
+        jLabelSubtitulo1.setBounds(70, 55, 330, 30);
 
         jLabelTextView.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelTextView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTextView.setText("VISTA TEXTO");
         jPanelPrincipal.add(jLabelTextView);
-        jLabelTextView.setBounds(0, 105, 320, 30);
+        jLabelTextView.setBounds(200, 110, 200, 30);
 
         jLabelgraphicalview.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelgraphicalview.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelgraphicalview.setText("VISTA GRAFICA");
         jPanelPrincipal.add(jLabelgraphicalview);
-        jLabelgraphicalview.setBounds(410, 105, 490, 30);
+        jLabelgraphicalview.setBounds(400, 10, 600, 30);
+
+        jScrollPaneTextView.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jTextArea.setColumns(20);
         jTextArea.setEditable(false);
@@ -137,7 +141,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPaneTextView.setViewportView(jTextArea);
 
         jPanelPrincipal.add(jScrollPaneTextView);
-        jScrollPaneTextView.setBounds(10, 145, 140, 380);
+        jScrollPaneTextView.setBounds(220, 150, 160, 420);
 
         jScrollPanelGraphView.setBackground(new java.awt.Color(242, 240, 240));
 
@@ -145,7 +149,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
 
         jPanelPrincipal.add(jScrollPanelGraphView);
-        jScrollPanelGraphView.setBounds(415, 145, 480, 380);
+        jScrollPanelGraphView.setBounds(420, 50, 560, 520);
 
         jButtonBorrar.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jButtonBorrar.setText("Borrar");
@@ -155,10 +159,20 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonBorrar);
-        jButtonBorrar.setBounds(310, 270, 100, 31);
+        jButtonBorrar.setBounds(50, 150, 100, 31);
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanelPrincipal.add(jSeparator3);
+        jSeparator3.setBounds(200, 100, 6, 500);
+
+        jLabelTextView1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabelTextView1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTextView1.setText("OPCIONES");
+        jPanelPrincipal.add(jLabelTextView1);
+        jLabelTextView1.setBounds(0, 110, 200, 30);
 
         getContentPane().add(jPanelPrincipal);
-        jPanelPrincipal.setBounds(0, 0, 900, 600);
+        jPanelPrincipal.setBounds(0, 0, 1000, 600);
 
         jMenuArchivo.setText("Archivo");
 
@@ -194,8 +208,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-910)/2, (screenSize.height-565)/2, 910, 565);
+        setBounds(0, 0, 1010, 630);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -363,6 +376,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSubtitulo;
     private javax.swing.JLabel jLabelSubtitulo1;
     private javax.swing.JLabel jLabelTextView;
+    private javax.swing.JLabel jLabelTextView1;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelgraphicalview;
     private javax.swing.JMenuItem jMIAcercaDe;
@@ -377,6 +391,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanelGraphView;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }
