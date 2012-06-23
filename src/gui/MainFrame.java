@@ -245,8 +245,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
-        int initialX = jPanelGraphiclView.getWidth();
-        int initialY = jPanelGraphiclView.getHeight();
+        int initialX = (jPanelGraphiclView.getWidth()-poligono.getBounds().width)/2;
+        int initialY = (jPanelGraphiclView.getHeight()-poligono.getBounds().height)/2;
 
         int[] xPoints = new int[poligono.getNpoints()];
         int[] yPoints = new int[poligono.getNpoints()];

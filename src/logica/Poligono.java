@@ -9,7 +9,7 @@
 //
 // ARCHIVO: Poligono.java
 //
-// FECHA:  22.06.12
+// FECHA:  23.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743
@@ -34,10 +34,13 @@ package logica;
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.Polygon;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -45,6 +48,8 @@ import java.util.StringTokenizer;
  * @author gadolforl
  */
 public class Poligono extends Polygon {
+    int[]          cartesianXpoints;
+    int[]          cartesianYpoints;
     private String textoEnArchivo;
 
     /**
@@ -57,12 +62,27 @@ public class Poligono extends Polygon {
      * Constructs ...
      *
      *
-     * @param xpoints
-     * @param ypoints
+     * @param cartesianXpoints
+     * @param cartesianYpoints
      * @param npoints
      */
-    public Poligono(int[] xpoints, int[] ypoints, int npoints) {
-        super(xpoints, ypoints, npoints);
+    public Poligono(int[] cartesianXpoints, int[] cartesianYpoints, int npoints) {
+        super();
+        this.npoints          = npoints;
+        this.cartesianXpoints = cartesianXpoints;
+        this.cartesianYpoints = cartesianYpoints;
+
+        // Encontrar el Xmin y el Y max
+        int xMin = FuncionesAuxiliares.getMinValue(cartesianXpoints);
+        int yMax = FuncionesAuxiliares.getMaxValue(cartesianYpoints);
+
+        xpoints = new int[npoints];
+        ypoints = new int[npoints];
+
+        for (int i = 0; i < ypoints.length; i++) {
+            ypoints[i] = cartesianXpoints[i] - xMin;
+            xpoints[i] = yMax - cartesianYpoints[i];
+        }
     }
 
     /**
@@ -147,6 +167,26 @@ public class Poligono extends Polygon {
      *
      * @return
      */
+    public int[] getCartesianXpoints() {
+        return cartesianXpoints;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    public int[] getCartesianYpoints() {
+        return cartesianYpoints;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
     public int getNpoints() {
         return npoints;
     }
@@ -179,6 +219,26 @@ public class Poligono extends Polygon {
      */
     public int[] getYpoints() {
         return ypoints;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param cartesianXpoints
+     */
+    public void setCartesianXpoints(int[] cartesianXpoints) {
+        this.cartesianXpoints = cartesianXpoints;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param cartesianYpoints
+     */
+    public void setCartesianYpoints(int[] cartesianYpoints) {
+        this.cartesianYpoints = cartesianYpoints;
     }
 
     /**

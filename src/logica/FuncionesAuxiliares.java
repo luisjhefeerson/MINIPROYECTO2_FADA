@@ -7,7 +7,7 @@
 //
 // FECHA INICIACION: JUNIO DE 2012
 //
-// ARCHIVO: Celda.java
+// ARCHIVO: FuncionesAuxiliares.java
 //
 // FECHA:  23.06.12
 //
@@ -32,58 +32,51 @@
 package logica;
 
 /**
+ * Class description
  *
- * @author gadolforl
+ *
+ * @version        Enter version here..., 23.06.12
+ * @author         Enter your name here...    
  */
-public class Celda {
-    private double costo;
-    private int    k;
+public class FuncionesAuxiliares {
 
     /**
-     * Constructs ...
+     * Method description
      *
      *
-     * @param costo
-     * @param k
+     * @param numbers
+     *
+     * @return
      */
-    public Celda(double costo, int k) {
-        this.costo = costo;
-        this.k     = k;
+    public static int getMaxValue(int[] numbers) {
+        int maxValue = numbers[0];
+
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] > maxValue) {
+                maxValue = numbers[i];
+            }
+        }
+
+        return maxValue;
     }
 
     /**
-     * Get the value of costo
+     * Method description
      *
-     * @return the value of costo
+     *
+     * @param numbers
+     *
+     * @return
      */
-    public double getCosto() {
-        return costo;
-    }
+    public static int getMinValue(int[] numbers) {
+        int minValue = numbers[0];
 
-    /**
-     * Get the value of k
-     *
-     * @return the value of k
-     */
-    public int getK() {
-        return k;
-    }
+        for (int i = 1; i < numbers.length; i++) {
+            if (numbers[i] < minValue) {
+                minValue = numbers[i];
+            }
+        }
 
-    /**
-     * Set the value of costo
-     *
-     * @param costo new value of costo
-     */
-    public void setCosto(double costo) {
-        this.costo = costo;
-    }
-
-    /**
-     * Set the value of k
-     *
-     * @param k new value of k
-     */
-    public void setK(int k) {
-        this.k = k;
+        return minValue;
     }
 }

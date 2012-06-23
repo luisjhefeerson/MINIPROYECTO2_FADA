@@ -9,7 +9,7 @@
 //
 // ARCHIVO: TrianguladorMinimalDinamico.java
 //
-// FECHA:  22.06.12
+// FECHA:  23.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743
