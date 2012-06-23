@@ -215,7 +215,6 @@ public class MainFrame extends javax.swing.JFrame {
      * @param evt
      */
     private void jMIAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAcercaDeActionPerformed
-
         // <editor-fold defaultstate="collapsed" desc="jMIAcercaDeActionPerformed()">
         String acercaDe = " FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS"
                 + "\n MINIPROYECTO 2 - FADA: PROGRAMACIÓN DINÁMICA Y VORAZ:"
