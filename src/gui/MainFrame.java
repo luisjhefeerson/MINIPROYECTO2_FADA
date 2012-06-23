@@ -27,9 +27,7 @@
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
 //*************************************************************
-
 package gui;
-
 
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -40,8 +38,8 @@ import logica.Poligono;
  * Class description
  *
  *
- * @version Enter version here..., 01.06.12
- * @author Enter your name here...
+ * @version
+ * @author
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -52,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
      *
      */
     public MainFrame() {
-        
+
         initComponents();
     }
 
@@ -80,7 +78,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButtonBorrar = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
-        jMICargarTablero = new javax.swing.JMenuItem();
+        jMICargarPoligono = new javax.swing.JMenuItem();
         jMISalir = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMIAcercaDe = new javax.swing.JMenuItem();
@@ -139,7 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPaneTextView.setViewportView(jTextArea);
 
         jPanelPrincipal.add(jScrollPaneTextView);
-        jScrollPaneTextView.setBounds(10, 145, 280, 380);
+        jScrollPaneTextView.setBounds(10, 145, 140, 380);
 
         jScrollPanelGraphView.setBackground(new java.awt.Color(242, 240, 240));
 
@@ -164,13 +162,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuArchivo.setText("Archivo");
 
-        jMICargarTablero.setText("Cargar Poligono");
-        jMICargarTablero.addActionListener(new java.awt.event.ActionListener() {
+        jMICargarPoligono.setText("Cargar Poligono");
+        jMICargarPoligono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarTableroActionPerformed(evt);
+                jMICargarPoligonoActionPerformed(evt);
             }
         });
-        jMenuArchivo.add(jMICargarTablero);
+        jMenuArchivo.add(jMICargarPoligono);
 
         jMISalir.setText("Salir");
         jMISalir.addActionListener(new java.awt.event.ActionListener() {
@@ -217,17 +215,30 @@ public class MainFrame extends javax.swing.JFrame {
      * @param evt
      */
     private void jMIAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAcercaDeActionPerformed
-
         // <editor-fold defaultstate="collapsed" desc="jMIAcercaDeActionPerformed()">
-        String acercaDe = "FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS\n"
-                + "MINIPROYECTO 1: SOLUCIÓN PARA UN JUEGO DE LÓGICA: AKARI\n" + "\n"
-                + "ARCHIVO: MainFrame.java\n" + "\n" + "FECHA:\n" + "\n" + "AUTORES:\n"
-                + "    Marx Arturo Arias - 0840247-3743\n" + "    marxarturoariasescobar@gmail.com\n" + "\n"
-                + "    Luis Jeferson Gallardo - \n" + "    luisjhefeerson@gmail.com\n" + "\n"
-                + "    Fidel Herney Palacios - 0832691-3743\n" + "    herney400@gmail.com\n" + "\n"
-                + "    James Andrés Payan - 0957150-2711\n" + "    jamespayan@gmail.com\n" + "\n"
-                + "    Gustavo Adolfo Rodriguez - 0932979-3743\n" + "    gustalibreros@gmail.com\n" + "\n"
-                + "ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION\n" + "UNIVERSIDAD DEL VALLE";
+        String acercaDe = " FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS"
+                + "\n MINIPROYECTO 2 - FADA: PROGRAMACIÓN DINÁMICA Y VORAZ:"
+                + "\n                        TRIANGULACIÓN DE POLÍGONOS"
+                + "\n"
+                + "\n WEB PAGE: http://gustalibreros.github.com/MINIPROYECTO2_FADA"
+                + "\n"
+                + "\n FECHA INICIACION: JUNIO DE 2012"
+                + "\n"
+                + "\n AUTORES:"
+                + "\n     Marx Arturo Arias - 0840247-3743"
+                + "\n     marxarturoariasescobar@gmail.com"
+                + "\n"
+                + "\n     Luis Jeferson Gallardo - 0843805-2711"
+                + "\n     luisjhefeerson@gmail.com"
+                + "\n"
+                + "\n     Fidel Herney Palacios - 0832691-3743"
+                + "\n     herney400@gmail.com"
+                + "\n"
+                + "\n     Gustavo Adolfo Rodriguez - 0932979-3743    "
+                + "\n     gustalibreros@gmail.com"
+                + "\n"
+                + "\n ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION"
+                + "\n UNIVERSIDAD DEL VALLE";
 
         JOptionPane.showMessageDialog(this, acercaDe, "Acerda de", JOptionPane.INFORMATION_MESSAGE);
 
@@ -240,27 +251,25 @@ public class MainFrame extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jMICargarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarTableroActionPerformed
-        JFileChooser selectorArchivo = new JFileChooser("./tests/");
-
+    private void jMICargarPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarPoligonoActionPerformed
+        
+        JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         int resultado = selectorArchivo.showOpenDialog(this);
 
         if (resultado != JFileChooser.CANCEL_OPTION) {
             File selectedFile = selectorArchivo.getSelectedFile();
-            Poligono poligono = new Poligono();
-            
+            poligono = new Poligono();
             if (poligono.loadFromFile(selectedFile)) {
-                
                 jTextArea.setText(poligono.getTextoEnArchivo());
-                GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, poligono.getCx(), poligono.getCy());
+                GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, poligono.getXpoints(), poligono.getYpoints());
             } else {
                 JOptionPane.showMessageDialog(this, "El archivo no pudo ser procesado", "Formato no Valido",
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jMICargarTableroActionPerformed
+    }//GEN-LAST:event_jMICargarPoligonoActionPerformed
 
     /**
      * Method description
@@ -270,21 +279,21 @@ public class MainFrame extends javax.swing.JFrame {
      */
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
 
-        int[] Cx= new int [5];
-        int[] Cy= new int [5];
-        Cx[0]=30;
-        Cx[1]=10;
-        Cx[2]=45;
-        Cx[3]=90;
-        Cx[4]=70;
-        Cy[0]=20;
-        Cy[1]=50;
-        Cy[2]=70;
-        Cy[3]=45;
-        Cy[4]=30;
-        
+        int[] Cx = new int[5];
+        int[] Cy = new int[5];
+        Cx[0] = 30;
+        Cx[1] = 10;
+        Cx[2] = 45;
+        Cx[3] = 90;
+        Cx[4] = 70;
+        Cy[0] = 20;
+        Cy[1] = 50;
+        Cy[2] = 70;
+        Cy[3] = 45;
+        Cy[4] = 30;
+
         GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, Cx, Cy);
-        
+
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     /**
@@ -293,13 +302,10 @@ public class MainFrame extends javax.swing.JFrame {
      *
      * @param evt
      */
-    
-
     /**
      * Method description
      *
      */
-    
     /**
      * Method description
      *
@@ -322,7 +328,7 @@ public class MainFrame extends javax.swing.JFrame {
 //        TrianguladorMinimalDinamico triangulador = new TrianguladorMinimalDinamico(poligono);
 //
 //        System.out.print("Costo de triangulacion Minimal: " + triangulador.calcularTriangulacion(0, 7));
-        
+
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 
         /*
@@ -360,7 +366,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelgraphicalview;
     private javax.swing.JMenuItem jMIAcercaDe;
-    private javax.swing.JMenuItem jMICargarTablero;
+    private javax.swing.JMenuItem jMICargarPoligono;
     private javax.swing.JMenuItem jMISalir;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;

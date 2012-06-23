@@ -33,22 +33,19 @@ package logica;
 
 //~--- JDK imports ------------------------------------------------------------
 
+import java.awt.Polygon;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
 import java.util.StringTokenizer;
 
 /**
  *
  * @author gadolforl
  */
-public class Poligono {
-    private int[]     Cx, Cy;
-    private int       nVertices;
-    private String    textoEnArchivo;
-    private Vertice[] vertices;
+public class Poligono extends Polygon {
+    private String textoEnArchivo;
 
     /**
      * Constructs ...
@@ -60,22 +57,12 @@ public class Poligono {
      * Constructs ...
      *
      *
-     * @param vertices
-     * @param nVertices
+     * @param xpoints
+     * @param ypoints
+     * @param npoints
      */
-    public Poligono(Vertice[] vertices, int nVertices) {
-        this.vertices  = vertices;
-        this.nVertices = nVertices;
-    }
-
-    /**
-     * Method description
-     *
-     *
-     * @return
-     */
-    public int getnVertices() {
-        return nVertices;
+    public Poligono(int[] xpoints, int[] ypoints, int npoints) {
+        super(xpoints, ypoints, npoints);
     }
 
     /**
@@ -118,8 +105,9 @@ public class Poligono {
     private boolean procesarFileContents() {
         StringTokenizer tokens = new StringTokenizer(textoEnArchivo);
 
-        Cx = new int[tokens.countTokens() / 2];
-        Cy = new int[tokens.countTokens() / 2];
+        npoints = tokens.countTokens() / 2;
+        xpoints = new int[npoints];
+        ypoints = new int[npoints];
 
         try {
             int[] x = new int[tokens.countTokens()];
@@ -135,10 +123,10 @@ public class Poligono {
 
             for (int i = 0; i < x.length; i++) {
                 if ((i % 2) == 0) {
-                    Cx[w] = x[i];
+                    xpoints[w] = x[i];
                     w++;
                 } else {
-                    Cy[j] = x[i];
+                    ypoints[j] = x[i];
                     j++;
                 }
             }
@@ -157,30 +145,10 @@ public class Poligono {
      * Method description
      *
      *
-     * @param nVertices
-     */
-    public void setnVertices(int nVertices) {
-        this.nVertices = nVertices;
-    }
-
-    /**
-     * Method description
-     *
-     *
      * @return
      */
-    public int[] getCx() {
-        return Cx;
-    }
-
-    /**
-     * Method description
-     *
-     *
-     * @return
-     */
-    public int[] getCy() {
-        return Cy;
+    public int getNpoints() {
+        return npoints;
     }
 
     /**
@@ -199,28 +167,28 @@ public class Poligono {
      *
      * @return
      */
-    public Vertice[] getVertices() {
-        return vertices;
+    public int[] getXpoints() {
+        return xpoints;
     }
 
     /**
      * Method description
      *
      *
-     * @param Cx
+     * @return
      */
-    public void setCx(int[] Cx) {
-        this.Cx = Cx;
+    public int[] getYpoints() {
+        return ypoints;
     }
 
     /**
      * Method description
      *
      *
-     * @param Cy
+     * @param npoints
      */
-    public void setCy(int[] Cy) {
-        this.Cy = Cy;
+    public void setNpoints(int npoints) {
+        this.npoints = npoints;
     }
 
     /**
@@ -237,9 +205,19 @@ public class Poligono {
      * Method description
      *
      *
-     * @param vertices
+     * @param xpoints
      */
-    public void setVertices(Vertice[] vertices) {
-        this.vertices = vertices;
+    public void setXpoints(int[] xpoints) {
+        this.xpoints = xpoints;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param ypoints
+     */
+    public void setYpoints(int[] ypoints) {
+        this.ypoints = ypoints;
     }
 }

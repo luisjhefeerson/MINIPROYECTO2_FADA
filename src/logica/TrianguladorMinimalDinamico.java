@@ -51,12 +51,12 @@ public class TrianguladorMinimalDinamico {
      */
     public TrianguladorMinimalDinamico(Poligono poligono) {
         this.poligono = poligono;
-        matrizCostos  = new Celda[poligono.getnVertices() - 1][poligono.getnVertices()];
+        matrizCostos  = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
 
         // Llenar las dos ultimas filas con cero
         for (int i = 0; i < matrizCostos.length; i++) {
             for (int j = 0; j < matrizCostos[i].length; j++) {
-                if (i >= poligono.getnVertices() - 3) {
+                if (i >= poligono.getNpoints() - 3) {
                     matrizCostos[i][j] = new Celda(0, -1);
                 } else {
                     matrizCostos[i][j] = new Celda(-1, -1);
@@ -69,22 +69,20 @@ public class TrianguladorMinimalDinamico {
      * Method description
      *
      *
-     * @param vertice1
-     * @param vertice2
+     *
+     * @param indexVertice1
+     * @param indexVertice2
      *
      * @return
      */
-    public double Distancia(Vertice vertice1, Vertice vertice2) {
-        double  d  = 0;
-        Vertice v1 = vertice1;
-        Vertice v2 = vertice2;
+    public double Distancia(int indexVertice1, int indexVertice2) {
+        double d = 0;
 
-        if ((v1.getI() + 1) == v2.getI() || (v2.getI() + 1) == v1.getI()
-                || ((v1.getI() == poligono.getnVertices()) && (v2.getI() == 0))
-                || ((v2.getI() == poligono.getnVertices()) && (v1.getI() == 0))) {
+        if (true) {
             return d;
         } else {
-            d = Math.sqrt(Math.pow(v1.getX() - v2.getX(), 2) + Math.pow(v1.getY() - v2.getY(), 2));
+            d = Math.sqrt(Math.pow(poligono.getXpoints()[indexVertice1] - poligono.getXpoints()[indexVertice2], 2)
+                          + Math.pow(poligono.getYpoints()[indexVertice1] - poligono.getYpoints()[indexVertice2], 2));
 
             return d;
         }
@@ -107,8 +105,7 @@ public class TrianguladorMinimalDinamico {
 
             for (int k = 1; k <= s - 2; k++) {
                 double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
-                               + Distancia(poligono.getVertices()[i], poligono.getVertices()[i + k])
-                               + Distancia(poligono.getVertices()[i + k], poligono.getVertices()[i + s - 1]);
+                               + Distancia(i, i + k) + Distancia(i + k, i + s - 1);
 
                 if (costo < minimo.getCosto()) {
                     minimo = new Celda(costo, k);
