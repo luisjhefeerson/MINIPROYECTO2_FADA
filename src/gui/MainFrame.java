@@ -34,30 +34,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import logica.Poligono;
 
-/**
- * Class description
- *
- *
- * @version
- * @author
- */
 public class MainFrame extends javax.swing.JFrame {
 
     Poligono poligono;
 
-    /**
-     * Constructs ...
-     *
-     */
     public MainFrame() {
-
         initComponents();
     }
 
-    /**
-     * Method description
-     *
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,7 +59,6 @@ public class MainFrame extends javax.swing.JFrame {
         jTextArea = new javax.swing.JTextArea();
         jScrollPanelGraphView = new javax.swing.JScrollPane();
         jPanelGraphiclView = new javax.swing.JPanel();
-        jButtonBorrar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jLabelTextView1 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -151,16 +134,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jScrollPanelGraphView);
         jScrollPanelGraphView.setBounds(420, 50, 560, 520);
 
-        jButtonBorrar.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
-        jButtonBorrar.setText("Borrar");
-        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBorrarActionPerformed(evt);
-            }
-        });
-        jPanelPrincipal.add(jButtonBorrar);
-        jButtonBorrar.setBounds(50, 150, 100, 31);
-
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator3);
         jSeparator3.setBounds(200, 100, 6, 500);
@@ -211,22 +184,10 @@ public class MainFrame extends javax.swing.JFrame {
         setBounds(0, 0, 1010, 630);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
     private void jMISalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMISalirActionPerformed
 
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
     private void jMIAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAcercaDeActionPerformed
         // <editor-fold defaultstate="collapsed" desc="jMIAcercaDeActionPerformed()">
         String acercaDe = " FUNDAMENTOS DE ANÁLISIS Y DISEÑO DE ALGORITMOS"
@@ -258,25 +219,22 @@ public class MainFrame extends javax.swing.JFrame {
         // </editor-fold>
     }//GEN-LAST:event_jMIAcercaDeActionPerformed
 
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
     private void jMICargarPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarPoligonoActionPerformed
-        
+
         JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
         int resultado = selectorArchivo.showOpenDialog(this);
 
         if (resultado != JFileChooser.CANCEL_OPTION) {
+
             File selectedFile = selectorArchivo.getSelectedFile();
             poligono = new Poligono();
+
             if (poligono.loadFromFile(selectedFile)) {
+
                 jTextArea.setText(poligono.getTextoEnArchivo());
-                GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, poligono.getXpoints(), poligono.getYpoints());
+                graficarPoligono();
+
             } else {
                 JOptionPane.showMessageDialog(this, "El archivo no pudo ser procesado", "Formato no Valido",
                         JOptionPane.ERROR_MESSAGE);
@@ -284,63 +242,23 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMICargarPoligonoActionPerformed
 
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
-    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+    private void graficarPoligono() {
 
-        int[] Cx = new int[5];
-        int[] Cy = new int[5];
-        Cx[0] = 30;
-        Cx[1] = 10;
-        Cx[2] = 45;
-        Cx[3] = 90;
-        Cx[4] = 70;
-        Cy[0] = 20;
-        Cy[1] = 50;
-        Cy[2] = 70;
-        Cy[3] = 45;
-        Cy[4] = 30;
+        //Coordenadas Iniciales para Centrar (Incompleto)
+        int initialX = jPanelGraphiclView.getWidth();
+        int initialY = jPanelGraphiclView.getHeight();
 
-        GraficarPoligono.poligono(jPanelGraphiclView.getGraphics(), 0, 0, Cx, Cy);
+        int[] xPoints = new int[poligono.getNpoints()];
+        int[] yPoints = new int[poligono.getNpoints()];
 
-    }//GEN-LAST:event_jButtonBorrarActionPerformed
+        for (int i = 0; i < yPoints.length; i++) {
+            yPoints[i] = poligono.getYpoints()[i] + initialY;
+            xPoints[i] = poligono.getXpoints()[i] + initialX;
+        }
+        jPanelGraphiclView.getGraphics().drawPolygon(xPoints, yPoints, poligono.getNpoints());
+    }
 
-    /**
-     * Method description
-     *
-     *
-     * @param evt
-     */
-    /**
-     * Method description
-     *
-     */
-    /**
-     * Method description
-     *
-     *
-     * @param args
-     */
     public static void main(String args[]) {
-
-//        Vertice[] vertices = new Vertice[7];
-//
-//        vertices[0] = new Vertice(0, 0, 10);
-//        vertices[1] = new Vertice(1, 0, 20);
-//        vertices[2] = new Vertice(2, 8, 26);
-//        vertices[3] = new Vertice(3, 15, 26);
-//        vertices[4] = new Vertice(4, 27, 21);
-//        vertices[5] = new Vertice(5, 22, 12);
-//        vertices[6] = new Vertice(6, 10, 0);
-//
-//        Poligono                    poligono     = new Poligono(vertices, 7);
-//        TrianguladorMinimalDinamico triangulador = new TrianguladorMinimalDinamico(poligono);
-//
-//        System.out.print("Costo de triangulacion Minimal: " + triangulador.calcularTriangulacion(0, 7));
 
         // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 
@@ -371,7 +289,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBorrar;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelSubtitulo;
     private javax.swing.JLabel jLabelSubtitulo1;
