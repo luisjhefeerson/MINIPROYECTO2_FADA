@@ -50,19 +50,22 @@ public class TrianguladorMinimalDinamico {
      * @param poligono
      */
     public TrianguladorMinimalDinamico(Poligono poligono) {
+        
         this.poligono = poligono;
         matrizCostos  = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
 
-        // Llenar las dos ultimas filas con cero
+        // Inicializacion de la matriz con las dos primeras filas en cero
+        // -1 es el valor a utilizar cuando una celda no tiene valor o k!
         for (int i = 0; i < matrizCostos.length; i++) {
             for (int j = 0; j < matrizCostos[i].length; j++) {
-                if (i >= poligono.getNpoints() - 3) {
+                if (i<2) {
                     matrizCostos[i][j] = new Celda(0, -1);
                 } else {
                     matrizCostos[i][j] = new Celda(-1, -1);
                 }
             }
         }
+        
     }
 
     /**
@@ -76,6 +79,7 @@ public class TrianguladorMinimalDinamico {
      * @return
      */
     public double Distancia(int indexVertice1, int indexVertice2) {
+        
         double d = 0;
 
         if (true) {
@@ -102,14 +106,18 @@ public class TrianguladorMinimalDinamico {
      * @return
      */
     public double calcularTriangulacion(int i, int s) {
+        
+        // Es necesario saber si el valor ya fue calculado
         if (matrizCostos[s - 2][i].getCosto() != -1) {
             return matrizCostos[s - 2][i].getCosto();
-        } else {
+        } 
+        // Si no esta se calcula!
+        else {
             Celda minimo = new Celda(100000000, -1);
 
             for (int k = 1; k <= s - 2; k++) {
                 double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
-                               + Distancia(i, i + k) + Distancia(i + k, i + s - 1);
+                               + Distancia(i, i + k) + Distancia(i + k, i + s - 1);// Revisar
 
                 if (costo < minimo.getCosto()) {
                     minimo = new Celda(costo, k);

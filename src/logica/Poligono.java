@@ -115,8 +115,8 @@ public class Poligono extends Polygon {
             }
 
             textoEnArchivo = bufer.toString();
-
             return procesarFileContents();
+            
         } catch (IOException ex) {
             System.out.println(ex.toString());
 

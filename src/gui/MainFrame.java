@@ -31,6 +31,10 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -39,7 +43,11 @@ import logica.TrianguladorMinimalDinamico;
 
 public class MainFrame extends javax.swing.JFrame {
 
-    Poligono poligono;
+    private Poligono poligono;
+    private Polygon p;
+    private double cy;
+    private double cx;
+    private Graphics2D g;
 
     public MainFrame() {
         initComponents();
@@ -66,9 +74,11 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelTextView1 = new javax.swing.JLabel();
         jButtonDinamico = new javax.swing.JButton();
         jLabelResultado = new javax.swing.JLabel();
+        jButtonLoad = new javax.swing.JButton();
+        jSliderZoom = new javax.swing.JSlider();
+        jLabelZomm = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
-        jMICargarPoligono = new javax.swing.JMenuItem();
         jMISalir = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
         jMIAcercaDe = new javax.swing.JMenuItem();
@@ -157,7 +167,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico);
-        jButtonDinamico.setBounds(30, 150, 150, 31);
+        jButtonDinamico.setBounds(25, 270, 150, 31);
 
         jLabelResultado.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -165,18 +175,36 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jLabelResultado);
         jLabelResultado.setBounds(420, 550, 560, 30);
 
+        jButtonLoad.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonLoad.setText("Cargar Poligono");
+        jButtonLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoadActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonLoad);
+        jButtonLoad.setBounds(25, 150, 150, 31);
+
+        jSliderZoom.setMaximum(500);
+        jSliderZoom.setToolTipText("%");
+        jSliderZoom.setValue(100);
+        jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderZoomStateChanged(evt);
+            }
+        });
+        jPanelPrincipal.add(jSliderZoom);
+        jSliderZoom.setBounds(10, 210, 180, 50);
+
+        jLabelZomm.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jLabelZomm.setText("ZOOM:");
+        jPanelPrincipal.add(jLabelZomm);
+        jLabelZomm.setBounds(20, 190, 100, 19);
+
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
 
         jMenuArchivo.setText("Archivo");
-
-        jMICargarPoligono.setText("Cargar Poligono");
-        jMICargarPoligono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarPoligonoActionPerformed(evt);
-            }
-        });
-        jMenuArchivo.add(jMICargarPoligono);
 
         jMISalir.setText("Salir");
         jMISalir.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +268,14 @@ public class MainFrame extends javax.swing.JFrame {
         // </editor-fold>
     }//GEN-LAST:event_jMIAcercaDeActionPerformed
 
-    private void jMICargarPoligonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarPoligonoActionPerformed
+    private void jButtonDinamicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamicoActionPerformed
+
+        TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianDinamico.calcularTriangulacion(0, poligono.npoints));
+
+    }//GEN-LAST:event_jButtonDinamicoActionPerformed
+
+    private void jButtonLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadActionPerformed
 
         JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -261,21 +296,42 @@ public class MainFrame extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jMICargarPoligonoActionPerformed
 
-    private void jButtonDinamicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamicoActionPerformed
-      
-        
-        TrianguladorMinimalDinamico trianDinamico= new TrianguladorMinimalDinamico(poligono);
-        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: "+trianDinamico.calcularTriangulacion(0, poligono.npoints));
-        
-    }//GEN-LAST:event_jButtonDinamicoActionPerformed
+
+    }//GEN-LAST:event_jButtonLoadActionPerformed
+
+    private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
+
+        double zoom = (double)jSliderZoom.getValue() / 100;
+        System.out.println("zoom: "+zoom);
+//        AffineTransform old = g.getTransform();
+
+        AffineTransform tr2 = AffineTransform.getTranslateInstance(-cx, -cy);
+        AffineTransform tr = AffineTransform.getScaleInstance(zoom, zoom);
+
+        tr.concatenate(tr2);
+        tr2 = tr;
+        tr = AffineTransform.getTranslateInstance(cx, cy);
+        tr.concatenate(tr2);
+        tr2 = tr;
+
+//        tr = new AffineTransform(old);
+//        tr.concatenate(tr2);
+//        tr2 = tr;
+
+        g.setTransform(tr2);
+        g.draw(p);
+//        g.setTransform(old);
+
+    }//GEN-LAST:event_jSliderZoomStateChanged
 
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
-        int initialX = (jPanelGraphiclView.getWidth()-poligono.getBounds().width)/2;
-        int initialY = (jPanelGraphiclView.getHeight()-poligono.getBounds().height)/2;
+        int initialX = (jPanelGraphiclView.getWidth() - poligono.getBounds().width) / 2;
+        int initialY = (jPanelGraphiclView.getHeight() - poligono.getBounds().height) / 2;
+
+
 
         int[] xPoints = new int[poligono.getNpoints()];
         int[] yPoints = new int[poligono.getNpoints()];
@@ -284,9 +340,14 @@ public class MainFrame extends javax.swing.JFrame {
             yPoints[i] = poligono.getYpoints()[i] + initialY;
             xPoints[i] = poligono.getXpoints()[i] + initialX;
         }
-        jPanelGraphiclView.getGraphics().drawPolygon(xPoints, yPoints, poligono.getNpoints());
-        jPanelGraphiclView.getGraphics().drawString("Hola", 0, 0);
-        
+
+        p = new Polygon(xPoints, yPoints, poligono.getNpoints());
+
+        cx = p.getBounds2D().getCenterX();
+        cy = p.getBounds2D().getCenterY();
+
+        g = (Graphics2D) jPanelGraphiclView.getGraphics();
+        g.drawPolygon(p);
     }
 
     public static void main(String args[]) {
@@ -321,6 +382,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDinamico;
+    private javax.swing.JButton jButtonLoad;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelResultado;
     private javax.swing.JLabel jLabelSubtitulo;
@@ -328,9 +390,9 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTextView;
     private javax.swing.JLabel jLabelTextView1;
     private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelZomm;
     private javax.swing.JLabel jLabelgraphicalview;
     private javax.swing.JMenuItem jMIAcercaDe;
-    private javax.swing.JMenuItem jMICargarPoligono;
     private javax.swing.JMenuItem jMISalir;
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
@@ -342,6 +404,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSlider jSliderZoom;
     private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }
