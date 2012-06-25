@@ -153,7 +153,7 @@ public class TrianguladorMinimalDinamico {
      * @param i
      * @param s
      */
-    public void definirDiagonales(int i, int s) {
+    public void construirSolucionOptima(int i, int s) {
 
         // Sacar el k
         int k = matrizCostos[s - 2][i].getK();
@@ -167,8 +167,8 @@ public class TrianguladorMinimalDinamico {
                 matrizCuerdas[i + k][i + s - 1] = true;
             }
 
-            definirDiagonales(i, k + 1);
-            definirDiagonales(i + k, s - k);
+            construirSolucionOptima(i, k + 1);
+            construirSolucionOptima(i + k, s - k);
         }
     }
 

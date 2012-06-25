@@ -274,7 +274,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
         jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianDinamico.calcularTriangulacion(0, poligono.npoints));
-        trianDinamico.definirDiagonales(0, poligono.npoints);
+        trianDinamico.construirSolucionOptima(0, poligono.npoints);
         trianDinamico.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
         jPanelGraphiclView.repaint();
@@ -320,7 +320,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
         jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianVoraz.calcularTriangulacion(0, poligono.npoints));
-        trianVoraz.definirDiagonales(0, poligono.npoints);
+        trianVoraz.construirSolucionOptima(0, poligono.npoints);
         trianVoraz.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
         jPanelGraphiclView.repaint();
