@@ -52,7 +52,9 @@ public class Poligono extends Polygon {
     int[]          cartesianXpoints;
     int[]          cartesianYpoints;
     double         cx, cy;
+    int            height;
     private String textoEnArchivo;
+    int            width;
 
     /**
      * Constructs ...
@@ -129,32 +131,8 @@ public class Poligono extends Polygon {
         int[] copyCartisianY = new int[npoints];
 
         for (int i = 0; i < npoints; i++) {
-            copyCartisianX[i] = cartesianXpoints[i];
-            copyCartisianY[i] = cartesianYpoints[i];
-
-            // primer cuadrante
-            if ((copyCartisianX[i] > cx) && (copyCartisianY[i] < cy)) {
-                copyCartisianX[i] = copyCartisianX[i] + zoom;
-                copyCartisianY[i] = copyCartisianY[i] - zoom;;
-            }
-
-            // segundo cuadrante
-            if ((copyCartisianX[i] < cx) && (copyCartisianY[i] < cy)) {
-                copyCartisianX[i] = copyCartisianX[i] - zoom;
-                copyCartisianY[i] = copyCartisianY[i] - zoom;;
-            }
-
-            // tercer cuadrante
-            if ((copyCartisianX[i] < cx) && (copyCartisianY[i] > cy)) {
-                copyCartisianX[i] = copyCartisianX[i] - zoom;
-                copyCartisianY[i] = copyCartisianY[i] + zoom;;
-            }
-
-            if ((copyCartisianX[i] > cx) && (copyCartisianY[i] > cy)) {
-                copyCartisianX[i] = copyCartisianX[i] + zoom;
-                copyCartisianY[i] = copyCartisianY[i] + zoom;;
-            }
-
+            copyCartisianX[i] = cartesianXpoints[i] * zoom;
+            copyCartisianY[i] = cartesianYpoints[i] * zoom;
             System.out.println("x: " + copyCartisianX[i] + " y: " + copyCartisianY[i]);
         }
 
@@ -266,6 +244,21 @@ public class Poligono extends Polygon {
      *
      * @return
      */
+    public int getHeight() {
+        int yMin = FuncionesAuxiliares.getMinValue(ypoints);
+        int yMax = FuncionesAuxiliares.getMaxValue(ypoints);
+
+        height = yMax - yMin;
+
+        return height;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
     public int getNpoints() {
         return npoints;
     }
@@ -278,6 +271,21 @@ public class Poligono extends Polygon {
      */
     public String getTextoEnArchivo() {
         return textoEnArchivo;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    public int getWidth() {
+        int xMin = FuncionesAuxiliares.getMinValue(xpoints);
+        int xMax = FuncionesAuxiliares.getMaxValue(xpoints);
+
+        width = xMax - xMin;
+
+        return width;
     }
 
     /**

@@ -96,7 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator2);
-        jSeparator2.setBounds(400, 0, 2, 600);
+        jSeparator2.setBounds(400, 0, 6, 600);
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,7 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator3);
-        jSeparator3.setBounds(200, 100, 2, 500);
+        jSeparator3.setBounds(200, 100, 6, 500);
 
         jLabelTextView1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelTextView1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -160,7 +160,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico);
-        jButtonDinamico.setBounds(25, 270, 150, 27);
+        jButtonDinamico.setBounds(25, 270, 150, 31);
 
         jLabelResultado.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -176,10 +176,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonLoad);
-        jButtonLoad.setBounds(25, 150, 150, 27);
+        jButtonLoad.setBounds(25, 150, 150, 31);
 
         jSliderZoom.setToolTipText("");
-        jSliderZoom.setValue(20);
+        jSliderZoom.setValue(0);
         jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderZoomStateChanged(evt);
@@ -201,7 +201,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico1);
-        jButtonDinamico1.setBounds(25, 320, 150, 27);
+        jButtonDinamico1.setBounds(25, 320, 150, 31);
 
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
@@ -331,11 +331,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
-        System.out.println("Width" + poligono.getBounds().width);
-        System.out.println("Height" + poligono.getBounds().height);
+        System.out.println("Width" + poligono.getWidth());
+        System.out.println("Height" + poligono.getHeight());
 
-        int initialX = (jPanelGraphiclView.getWidth() - poligono.getBounds().width) / 2;
-        int initialY = (jPanelGraphiclView.getHeight() - poligono.getBounds().height) / 2;
+        int initialX = (jPanelGraphiclView.getWidth() - poligono.getWidth()) / 2;
+        int initialY = (jPanelGraphiclView.getHeight() - poligono.getHeight()) / 2;
 
         for (int i = 0; i < poligono.getNpoints(); i++) {
             poligono.getYpoints()[i] = poligono.getYpoints()[i] + initialY;

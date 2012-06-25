@@ -87,9 +87,9 @@ public class PanelGraphiclView extends JPanel {
             // Pintar las coordenadas en cada punto y los puntos
             for (int i = 0; i < poligono.getNpoints(); i++) {
                 g2D.setColor(Color.red);
-                g2D.fillOval(poligono.getXpoints()[i], poligono.getYpoints()[i], 10, 10);
+                g2D.fillOval(poligono.getXpoints()[i] - 5, poligono.getYpoints()[i] - 5, 10, 10);
                 g2D.setColor(Color.black);
-                g2D.drawString("(" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + ")",
+                g2D.drawString("[" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + "]",
                                poligono.getXpoints()[i], poligono.getYpoints()[i]);
             }
         }
