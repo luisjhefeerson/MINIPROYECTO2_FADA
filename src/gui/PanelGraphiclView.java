@@ -76,7 +76,10 @@ public class PanelGraphiclView extends JPanel {
             if (matrizCuerdas != null) {
                 for (int i = 0; i < matrizCuerdas.length; i++) {
                     for (int j = 0; j < matrizCuerdas[i].length; j++) {
-                        if (matrizCuerdas[i][j]) {}
+                        if (matrizCuerdas[i][j]) {
+                            g2D.drawLine(poligono.getXpoints()[i], poligono.getYpoints()[i], poligono.getXpoints()[j],
+                                         poligono.getYpoints()[j]);
+                        }
                     }
                 }
             }
