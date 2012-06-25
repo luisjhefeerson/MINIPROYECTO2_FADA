@@ -33,6 +33,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import logica.Poligono;
 import logica.TrianguladorMinimalDinamico;
 import logica.TrianguladorMinimalVoraz;
@@ -43,6 +44,8 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelGraphiclView jPanelGraphiclView;
     double zoomFactor;
     private final DecimalFormat df;
+    private TrianguladorMinimalDinamico trianDinamico;
+    private TrianguladorMinimalVoraz trianVoraz;
 
     public MainFrame() {
 
@@ -52,6 +55,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelGraphiclView = new PanelGraphiclView();
         jPanelGraphiclView.setLayout(null);
         jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
+        trianDinamico = null;
+        trianVoraz = null;
 
     }
 
@@ -80,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButtonVoraz = new javax.swing.JButton();
         jButtonZoomMenos = new javax.swing.JButton();
         jButtonZoomMas = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMISalir = new javax.swing.JMenuItem();
@@ -219,6 +225,16 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jButtonZoomMas);
         jButtonZoomMas.setBounds(110, 260, 45, 45);
 
+        jButtonGuardar.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
+        jButtonGuardar.setText("Guardar Solucion");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonGuardar);
+        jButtonGuardar.setBounds(20, 530, 160, 40);
+
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
 
@@ -288,12 +304,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButtonDinamicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamicoActionPerformed
 
+        if (poligono != null) {
+            trianVoraz = null;
+            trianDinamico = new TrianguladorMinimalDinamico(poligono);
+            jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianDinamico.calcularTriangulacion(0, poligono.npoints)));
+            trianDinamico.construirSolucionOptima(0, poligono.npoints);
+            jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
+            jPanelGraphiclView.repaint();
+        }
 
-        TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
-        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianDinamico.calcularTriangulacion(0, poligono.npoints)));
-        trianDinamico.construirSolucionOptima(0, poligono.npoints);
-        jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
-        jPanelGraphiclView.repaint();
 
     }//GEN-LAST:event_jButtonDinamicoActionPerformed
 
@@ -327,37 +346,68 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButtonVorazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVorazActionPerformed
 
-        TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
-        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianVoraz.calcularTriangulacion(0, poligono.npoints)));
-        trianVoraz.construirSolucionOptima(0, poligono.npoints);
-        jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
-        jPanelGraphiclView.repaint();
+        if (poligono != null) {
+            trianDinamico = null;
+            trianVoraz = new TrianguladorMinimalVoraz(poligono);
+            jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianVoraz.calcularTriangulacion(0, poligono.npoints)));
+            trianVoraz.construirSolucionOptima(0, poligono.npoints);
+            jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
+            jPanelGraphiclView.repaint();
+        }
 
     }//GEN-LAST:event_jButtonVorazActionPerformed
 
     private void jButtonZoomMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMenosActionPerformed
 
-        if (zoomFactor > 1) {
-            zoomFactor -= 0.5;
-        } else if (zoomFactor > 0) {
-            zoomFactor = zoomFactor - 0.1;
+
+        if (trianDinamico != null || trianVoraz != null) {
+            if (zoomFactor > 1) {
+                zoomFactor -= 0.5;
+            } else if (zoomFactor > 0) {
+                zoomFactor = zoomFactor - 0.1;
+            }
+            poligono.escalarAWT(zoomFactor);
+            graficarPoligono();
         }
-        poligono.escalarAWT(zoomFactor);
-        graficarPoligono();
 
     }//GEN-LAST:event_jButtonZoomMenosActionPerformed
 
     private void jButtonZoomMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMasActionPerformed
 
-        if (zoomFactor >= 1) {
-            zoomFactor += 0.5;
-        } else {
-            zoomFactor = zoomFactor + 0.1;
+        if (trianDinamico != null || trianVoraz != null) {
+            if (zoomFactor >= 1) {
+                zoomFactor += 0.5;
+            } else {
+                zoomFactor = zoomFactor + 0.1;
+            }
+            poligono.escalarAWT(zoomFactor);
+            graficarPoligono();
         }
-        poligono.escalarAWT(zoomFactor);
-        graficarPoligono();
 
     }//GEN-LAST:event_jButtonZoomMasActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
+
+        selectorArchivo.setFileFilter(filter);
+        selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        int resultado = selectorArchivo.showSaveDialog(this);
+
+        if (resultado != JFileChooser.CANCEL_OPTION) {
+            File selectedFile = new File(selectorArchivo.getSelectedFile().getAbsolutePath() + ".txt");
+
+            if (trianDinamico != null && trianVoraz == null) {
+                trianDinamico.saveToFile(selectedFile);
+            }
+            if (trianDinamico == null && trianVoraz != null) {
+                trianVoraz.saveToFile(selectedFile);
+            }
+
+        }
+
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void graficarPoligono() {
 
@@ -405,6 +455,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDinamico;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonLoad;
     private javax.swing.JButton jButtonVoraz;
     private javax.swing.JButton jButtonZoomMas;

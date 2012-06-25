@@ -35,14 +35,21 @@ package logica;
 
 import java.awt.Point;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author gadolforl
  */
 public class TrianguladorMinimalDinamico {
+    private double      costoSolucion;
     private Celda[][]   matrizCostos;
-    private boolean[][] matrizCuerdas;
+    private boolean[][] matrizDiagonales;
     private Poligono    poligono;
+    private int         totalDiagonales;
 
     /**
      * Constructs ...
@@ -51,13 +58,14 @@ public class TrianguladorMinimalDinamico {
      * @param poligono
      */
     public TrianguladorMinimalDinamico(Poligono poligono) {
-        this.poligono = poligono;
-        matrizCostos  = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
-        matrizCuerdas = new boolean[poligono.getNpoints()][poligono.getNpoints()];
+        this.poligono    = poligono;
+        matrizCostos     = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
+        matrizDiagonales = new boolean[poligono.getNpoints()][poligono.getNpoints()];
+        totalDiagonales  = 0;
 
         for (int i = 0; i < poligono.getNpoints(); i++) {
             for (int j = 0; j < poligono.getNpoints(); j++) {
-                matrizCuerdas[i][j] = false;
+                matrizDiagonales[i][j] = false;
             }
         }
 
@@ -116,7 +124,9 @@ public class TrianguladorMinimalDinamico {
 
         // Es necesario saber si el valor ya fue calculado
         if (matrizCostos[s - 2][i].getCosto() != -1) {
-            return matrizCostos[s - 2][i].getCosto();
+            costoSolucion = matrizCostos[s - 2][i].getCosto();
+
+            return costoSolucion;
         }                                                                              // Si no esta se calcula!
                 else {
             Celda minimo = new Celda(100000000, -1);
@@ -131,9 +141,31 @@ public class TrianguladorMinimalDinamico {
             }
 
             matrizCostos[s - 2][i] = minimo;
+            costoSolucion          = minimo.getCosto();
 
-            return minimo.getCosto();
+            return costoSolucion;
         }
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    private String construirArchivoSolucion() {
+        String salida = totalDiagonales + " " + costoSolucion + "\n";
+
+        for (int i = 0; i < matrizDiagonales.length; i++) {
+            for (int j = 0; j < matrizDiagonales[i].length; j++) {
+                if (matrizDiagonales[i][j]) {
+                    salida += poligono.getCartesianXpoints()[i] + " " + poligono.getCartesianYpoints()[i] + " ";
+                    salida += poligono.getCartesianXpoints()[j] + " " + poligono.getCartesianYpoints()[j] + "\n";
+                }
+            }
+        }
+
+        return salida;
     }
 
     /**
@@ -150,15 +182,39 @@ public class TrianguladorMinimalDinamico {
 
         if (k != -1) {
             if (k != 1) {
-                matrizCuerdas[i][i + k] = true;
+                matrizDiagonales[i][i + k] = true;
+                totalDiagonales++;
             }
 
             if (k != s - 2) {
-                matrizCuerdas[i + k][i + s - 1] = true;
+                matrizDiagonales[i + k][i + s - 1] = true;
+                totalDiagonales++;
             }
 
             construirSolucionOptima(i, k + 1);
             construirSolucionOptima(i + k, s - k);
+        }
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param selectedFile
+     */
+    public void saveToFile(File selectedFile) {
+        BufferedWriter writer = null;
+
+        try {
+            writer = new BufferedWriter(new FileWriter(selectedFile));
+            writer.write(construirArchivoSolucion());
+        } catch (IOException e) {}
+        finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {}
         }
     }
 
@@ -180,7 +236,7 @@ public class TrianguladorMinimalDinamico {
      * @return
      */
     public boolean[][] getMatrizCuerdas() {
-        return matrizCuerdas;
+        return matrizDiagonales;
     }
 
     /**
@@ -199,7 +255,7 @@ public class TrianguladorMinimalDinamico {
      * @param matrizCuerdas
      */
     public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
-        this.matrizCuerdas = matrizCuerdas;
+        this.matrizDiagonales = matrizCuerdas;
     }
 
     // </editor-fold>
