@@ -4,9 +4,12 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.util.Arrays;
+import java.util.Random;
 import javax.swing.JPanel;
 import logica.Poligono;
 
@@ -55,10 +58,30 @@ public class PanelGraphiclView extends JPanel {
             }
             if (matrizCuerdas!=null) {
                 
+                Random rand = new Random();
+                
                 for (int i = 0; i < matrizCuerdas.length; i++) {
                     for (int j = 0; j < matrizCuerdas[i].length; j++) {
                         if (matrizCuerdas[i][j]) {
-                            g2D.drawLine(poligono.getXpoints()[i], poligono.getYpoints()[i], poligono.getXpoints()[j], poligono.getYpoints()[j]);
+                            
+                            System.out.println("i: "+i);
+                            System.out.println("j: "+j);
+                            System.out.println("ENTRO");
+                            
+                            int[] xpointss=Arrays.copyOfRange(poligono.getXpoints(), i,j+1);
+                            int[] ypointss=Arrays.copyOfRange(poligono.getYpoints(), i,j+1);
+                            int length = xpointss.length;
+                            
+                            for (int k = 0; k < xpointss.length; k++) {
+                                System.out.println("x: "+xpointss[k]+" y: "+ypointss[k]);
+                            }
+                            
+                            g2D.drawPolygon(xpointss,ypointss,length);
+                            
+                            g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
+                            
+                            g2D.fillPolygon(xpointss, ypointss, length);
+                            
                         }
                     }
                 }
