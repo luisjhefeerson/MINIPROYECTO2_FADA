@@ -34,6 +34,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import logica.Poligono;
 import logica.TrianguladorMinimalDinamico;
+import logica.TrianguladorMinimalVoraz;
 
 public class MainFrame extends javax.swing.JFrame {
 
@@ -72,6 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButtonLoad = new javax.swing.JButton();
         jSliderZoom = new javax.swing.JSlider();
         jLabelZomm = new javax.swing.JLabel();
+        jButtonDinamico1 = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMISalir = new javax.swing.JMenuItem();
@@ -94,7 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator2);
-        jSeparator2.setBounds(400, 0, 6, 600);
+        jSeparator2.setBounds(400, 0, 2, 600);
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -142,7 +144,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator3);
-        jSeparator3.setBounds(200, 100, 6, 500);
+        jSeparator3.setBounds(200, 100, 2, 500);
 
         jLabelTextView1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelTextView1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,7 +160,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico);
-        jButtonDinamico.setBounds(25, 270, 150, 31);
+        jButtonDinamico.setBounds(25, 270, 150, 27);
 
         jLabelResultado.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -174,7 +176,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonLoad);
-        jButtonLoad.setBounds(25, 150, 150, 31);
+        jButtonLoad.setBounds(25, 150, 150, 27);
 
         jSliderZoom.setToolTipText("");
         jSliderZoom.setValue(20);
@@ -190,6 +192,16 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelZomm.setText("ZOOM:");
         jPanelPrincipal.add(jLabelZomm);
         jLabelZomm.setBounds(20, 190, 100, 19);
+
+        jButtonDinamico1.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonDinamico1.setText("Voraz");
+        jButtonDinamico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDinamico1ActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonDinamico1);
+        jButtonDinamico1.setBounds(25, 320, 150, 27);
 
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
@@ -298,17 +310,29 @@ public class MainFrame extends javax.swing.JFrame {
 
         int zoom = jSliderZoom.getValue();
         System.out.println("zoom: " + zoom);
-        
+
         poligono.escalarAWT(zoom);
         graficarPoligono();
     }//GEN-LAST:event_jSliderZoomStateChanged
 
+    private void jButtonDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamico1ActionPerformed
+
+        TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianVoraz.calcularTriangulacion(0, poligono.npoints));
+        trianVoraz.definirDiagonales(0, poligono.npoints);
+        trianVoraz.imprimirMatrizDiagonales();
+        jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
+        jPanelGraphiclView.repaint();
+        trianVoraz.imprimirMatrizCostos();
+
+    }//GEN-LAST:event_jButtonDinamico1ActionPerformed
+
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
-        System.out.println("Width"+poligono.getBounds().width);
-        System.out.println("Height"+poligono.getBounds().height);
-        
+        System.out.println("Width" + poligono.getBounds().width);
+        System.out.println("Height" + poligono.getBounds().height);
+
         int initialX = (jPanelGraphiclView.getWidth() - poligono.getBounds().width) / 2;
         int initialY = (jPanelGraphiclView.getHeight() - poligono.getBounds().height) / 2;
 
@@ -353,6 +377,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDinamico;
+    private javax.swing.JButton jButtonDinamico1;
     private javax.swing.JButton jButtonLoad;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelResultado;

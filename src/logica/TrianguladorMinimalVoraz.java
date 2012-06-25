@@ -36,7 +36,7 @@ import java.awt.Point;
  *
  * @author gadolforl
  */
-public class TrianguladorMinimalDinamico {
+public class TrianguladorMinimalVoraz {
 
     private Celda[][] matrizCostos;
     private boolean[][] matrizCuerdas;
@@ -48,7 +48,7 @@ public class TrianguladorMinimalDinamico {
      *
      * @param poligono
      */
-    public TrianguladorMinimalDinamico(Poligono poligono) {
+    public TrianguladorMinimalVoraz(Poligono poligono) {
         this.poligono = poligono;
         matrizCostos = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
         matrizCuerdas = new boolean[poligono.getNpoints()][poligono.getNpoints()];
@@ -124,23 +124,29 @@ public class TrianguladorMinimalDinamico {
             return matrizCostos[s - 2][i].getCosto();
         } // Si no esta se calcula!
         else {
-            Celda minimo = new Celda(100000000, -1);
+            double distanciaMinima=100000000;
+            int kelegante=-1;
 
             for (int k = 1; k <= s - 2; k++) {
                 System.out.println("K: " + k);
 
-                double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
-                        + Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
+                double distanciaMinima1 = Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
 
-                if (costo < minimo.getCosto()) {
-                    minimo = new Celda(costo, k);
+                if (distanciaMinima1 < distanciaMinima) {
+                    distanciaMinima=distanciaMinima1;
+                    kelegante=k;
                 }
             }
+            
+            double costo = calcularTriangulacion(i, kelegante + 1) + calcularTriangulacion(i + kelegante, s - kelegante)
+                        + Distancia(i, i + kelegante) + Distancia(i + kelegante, i + s - 1);    // Revisar
 
-            matrizCostos[s - 2][i] = minimo;
-            System.out.println("Recien Calculado C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
+            System.out.println("costo en voraz: "+costo);
+            
+            matrizCostos[s - 2][i] = new Celda(costo, kelegante);
+//            System.out.println("Recien Calculado C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
-            return minimo.getCosto();
+            return costo;
         }
     }
 
@@ -184,6 +190,16 @@ public class TrianguladorMinimalDinamico {
         }
     }
 
+    public void imprimirMatrizCostos(){
+        
+        System.out.println("Matriz de costos en voraz\n");
+        for (int i = 0; i < matrizCostos.length; i++) {
+            for (int j = 0; j < matrizCostos[i].length; j++) {
+                System.out.print(matrizCostos[i][j].getCosto()+"\t");
+            }
+            System.out.print("\n");
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
     /**
      * Get the value of matrizCostos
