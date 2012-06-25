@@ -155,7 +155,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jLabelTextView1);
         jLabelTextView1.setBounds(0, 110, 200, 30);
 
-        jButtonDinamico.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonDinamico.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
         jButtonDinamico.setText("Dinamico");
         jButtonDinamico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +163,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico);
-        jButtonDinamico.setBounds(25, 270, 150, 31);
+        jButtonDinamico.setBounds(20, 330, 160, 40);
 
         jLabelResultado.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -171,7 +171,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jLabelResultado);
         jLabelResultado.setBounds(420, 550, 560, 30);
 
-        jButtonLoad.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonLoad.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
         jButtonLoad.setText("Cargar Poligono");
         jButtonLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,14 +179,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonLoad);
-        jButtonLoad.setBounds(25, 150, 150, 31);
+        jButtonLoad.setBounds(20, 150, 160, 40);
 
         jLabelZomm.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jLabelZomm.setText("ZOOM:");
         jPanelPrincipal.add(jLabelZomm);
-        jLabelZomm.setBounds(20, 190, 100, 19);
+        jLabelZomm.setBounds(20, 230, 100, 19);
 
-        jButtonDinamico1.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jButtonDinamico1.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
         jButtonDinamico1.setText("Voraz");
         jButtonDinamico1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonDinamico1);
-        jButtonDinamico1.setBounds(25, 320, 150, 31);
+        jButtonDinamico1.setBounds(20, 400, 160, 40);
 
         jButtonZoomMenos.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jButtonZoomMenos.setText("-");
@@ -204,7 +204,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonZoomMenos);
-        jButtonZoomMenos.setBounds(50, 210, 45, 45);
+        jButtonZoomMenos.setBounds(50, 260, 45, 45);
 
         jButtonZoomMas.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jButtonZoomMas.setText("+");
@@ -214,7 +214,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jPanelPrincipal.add(jButtonZoomMas);
-        jButtonZoomMas.setBounds(110, 210, 45, 45);
+        jButtonZoomMas.setBounds(110, 260, 45, 45);
 
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
@@ -310,6 +310,7 @@ public class MainFrame extends javax.swing.JFrame {
                 jTextArea.setText(poligono.getTextoEnArchivo());
                 zoomFactor=1;
                 graficarPoligono();
+                jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: ");
                 jPanelGraphiclView.setMatrizCuerdas(null);
 
             } else {
@@ -336,7 +337,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButtonZoomMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMenosActionPerformed
 
         if (zoomFactor > 1) {
-            zoomFactor--;
+            zoomFactor-=0.5;
         } else if (zoomFactor>0){
             zoomFactor = zoomFactor - 0.1;
         }
@@ -348,7 +349,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButtonZoomMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMasActionPerformed
 
         if (zoomFactor >= 1) {
-            zoomFactor++;
+            zoomFactor+=0.5;
         } else {
             zoomFactor = zoomFactor + 0.1;
         }
@@ -359,6 +360,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void graficarPoligono() {
 
+        jPanelGraphiclView.setBounds(0, 0, 1000, 1000);
+        
         //Coordenadas Iniciales para Centrar (Incompleto)
         System.out.println("Width" + poligono.getWidth());
         System.out.println("Height" + poligono.getHeight());

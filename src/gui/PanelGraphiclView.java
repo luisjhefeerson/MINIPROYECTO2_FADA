@@ -35,6 +35,8 @@ package gui;
 
 import logica.Poligono;
 
+import sun.font.Font2D;
+
 //~--- JDK imports ------------------------------------------------------------
 
 import java.awt.*;
@@ -105,6 +107,7 @@ public class PanelGraphiclView extends JPanel {
                 g2D.setColor(Color.red);
                 g2D.fillOval(poligono.getXpoints()[i] - 5, poligono.getYpoints()[i] - 5, 10, 10);
                 g2D.setColor(Color.black);
+                g2D.setFont(new Font("Trebuchet MS", Font.BOLD, 14));
                 g2D.drawString("[" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + "]",
                                poligono.getXpoints()[i], poligono.getYpoints()[i]);
             }
