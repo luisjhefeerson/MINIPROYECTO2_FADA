@@ -158,10 +158,18 @@ public class TrianguladorMinimalDinamico {
         // Sacar el k
         int k = matrizCostos[s - 2][i].getK();
 
-        matrizCuerdas[i][i + k]         = true;
-        matrizCuerdas[i + k][i + s - 1] = true;
-        definirDiagonales(i, k + 1);
-        definirDiagonales(i + k, s - k);
+        if (k != -1) {
+            if (k != 1) {
+                matrizCuerdas[i][i + k] = true;
+            }
+
+            if (k != s - 2) {
+                matrizCuerdas[i + k][i + s - 1] = true;
+            }
+
+            definirDiagonales(i, k + 1);
+            definirDiagonales(i + k, s - k);
+        }
     }
 
     /**
@@ -171,7 +179,7 @@ public class TrianguladorMinimalDinamico {
     public void imprimirMatrizDiagonales() {
         for (int i = 0; i < poligono.getNpoints(); i++) {
             for (int j = 0; j < poligono.getNpoints(); j++) {
-                System.out.print(matrizCuerdas + " ");
+                System.out.print(matrizCuerdas[i][j] + " ");
             }
 
             System.out.print("\n");
@@ -190,12 +198,32 @@ public class TrianguladorMinimalDinamico {
     }
 
     /**
+     * Method description
+     *
+     *
+     * @return
+     */
+    public boolean[][] getMatrizCuerdas() {
+        return matrizCuerdas;
+    }
+
+    /**
      * Set the value of matrizCostos
      *
      * @param matrizCostos new value of matrizCostos
      */
     public void setMatrizCostos(Celda[][] matrizCostos) {
         this.matrizCostos = matrizCostos;
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param matrizCuerdas
+     */
+    public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
+        this.matrizCuerdas = matrizCuerdas;
     }
 
     // </editor-fold>

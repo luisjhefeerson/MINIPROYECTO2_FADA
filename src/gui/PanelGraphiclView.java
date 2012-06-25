@@ -18,6 +18,11 @@ public class PanelGraphiclView extends JPanel {
 
     private double zoom;
     private Poligono poligono;
+    private boolean[][] matrizCuerdas;
+
+    public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
+        this.matrizCuerdas = matrizCuerdas;
+    }
 
     /**
      * Get the value of poligono
@@ -46,10 +51,18 @@ public class PanelGraphiclView extends JPanel {
             g2D.drawPolygon(poligono);
 
             for (int i = 0; i < poligono.getNpoints(); i++) {
-                g2D.drawString("(" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + ")", poligono.getXpoints()[i], poligono.getYpoints()[i]);
+                //g2D.drawString("(" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + ")", poligono.getXpoints()[i], poligono.getYpoints()[i]);
             }
-
-
+            if (matrizCuerdas!=null) {
+                
+                for (int i = 0; i < matrizCuerdas.length; i++) {
+                    for (int j = 0; j < matrizCuerdas[i].length; j++) {
+                        if (matrizCuerdas[i][j]) {
+                            g2D.drawLine(poligono.getXpoints()[i], poligono.getYpoints()[i], poligono.getXpoints()[j], poligono.getYpoints()[j]);
+                        }
+                    }
+                }
+            }
         }
 
     }

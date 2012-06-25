@@ -29,12 +29,6 @@
 //*************************************************************
 package gui;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -268,6 +262,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
         jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianDinamico.calcularTriangulacion(0, poligono.npoints));
+        trianDinamico.definirDiagonales(0, poligono.npoints);
+        trianDinamico.imprimirMatrizDiagonales();
+        jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
+        jPanelGraphiclView.repaint();
 
     }//GEN-LAST:event_jButtonDinamicoActionPerformed
 
