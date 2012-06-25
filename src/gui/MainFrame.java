@@ -296,6 +296,7 @@ public class MainFrame extends javax.swing.JFrame {
 
                 jTextArea.setText(poligono.getTextoEnArchivo());
                 graficarPoligono();
+                jPanelGraphiclView.setMatrizCuerdas(null);
 
             } else {
                 JOptionPane.showMessageDialog(this, "El archivo no pudo ser procesado", "Formato no Valido",

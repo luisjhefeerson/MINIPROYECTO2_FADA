@@ -67,20 +67,50 @@ public class PanelGraphiclView extends JPanel {
                             System.out.println("i: "+i);
                             System.out.println("j: "+j);
                             System.out.println("ENTRO");
-                            
+                            if(((j+1)-i)==3){
                             int[] xpointss=Arrays.copyOfRange(poligono.getXpoints(), i,j+1);
                             int[] ypointss=Arrays.copyOfRange(poligono.getYpoints(), i,j+1);
                             int length = xpointss.length;
-                            
-                            for (int k = 0; k < xpointss.length; k++) {
-                                System.out.println("x: "+xpointss[k]+" y: "+ypointss[k]);
+                            g2D.drawPolygon(xpointss,ypointss,length);                            
+                            g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));                            
+                            g2D.fillPolygon(xpointss, ypointss, length);
+                            }
+                            if(j==(poligono.getNpoints()-2)){
+                                int[] xpoints=new int[3];
+                                int[] ypoints=new int[3];
+                                xpoints[0]=poligono.getXpoints()[0];
+                                ypoints[0]=poligono.getYpoints()[0];
+                                xpoints[1]=poligono.getXpoints()[j];
+                                ypoints[1]=poligono.getYpoints()[j];
+                                xpoints[2]=poligono.getXpoints()[j+1];
+                                ypoints[2]=poligono.getYpoints()[j+1];
+                                int length = xpoints.length;
+                                g2D.drawPolygon(xpoints,ypoints,length);                            
+                                g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));                            
+                                g2D.fillPolygon(xpoints, ypoints, length);
+                            }
+                            if((j-i)==3){
+                                int[] xpoints=new int[3];
+                                int[] ypoints=new int[3];
+                                xpoints[0]=poligono.getXpoints()[i];
+                                ypoints[0]=poligono.getYpoints()[i];
+                                xpoints[1]=poligono.getXpoints()[i+1];
+                                ypoints[1]=poligono.getYpoints()[i+1];
+                                xpoints[2]=poligono.getXpoints()[j];
+                                ypoints[2]=poligono.getYpoints()[j];
+                                int length = xpoints.length;
+                                g2D.drawPolygon(xpoints,ypoints,length);                            
+                                g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));                            
+                                g2D.fillPolygon(xpoints, ypoints, length);
                             }
                             
-                            g2D.drawPolygon(xpointss,ypointss,length);
+                           
                             
-                            g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
+//                            for (int k = 0; k < xpointss.length; k++) {
+//                                System.out.println("x: "+xpointss[k]+" y: "+ypointss[k]);
+//                            }
                             
-                            g2D.fillPolygon(xpointss, ypointss, length);
+                            
                             
                         }
                     }
