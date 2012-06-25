@@ -178,8 +178,10 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jButtonLoad);
         jButtonLoad.setBounds(25, 150, 150, 31);
 
+        jSliderZoom.setMaximum(40);
+        jSliderZoom.setMinimum(1);
         jSliderZoom.setToolTipText("");
-        jSliderZoom.setValue(0);
+        jSliderZoom.setValue(20);
         jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderZoomStateChanged(evt);

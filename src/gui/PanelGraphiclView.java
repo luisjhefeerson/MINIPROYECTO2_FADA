@@ -27,20 +27,14 @@
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
 //*************************************************************
-
-
 package gui;
 
 //~--- non-JDK imports --------------------------------------------------------
-
+import java.awt.*;
 import logica.Poligono;
 
 //~--- JDK imports ------------------------------------------------------------
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -52,9 +46,10 @@ import javax.swing.JPanel;
  * @author gustavo
  */
 public class PanelGraphiclView extends JPanel {
-    private boolean[][] matrizCuerdas;
-    private Poligono    poligono;
-    private double      zoom;
+
+    private boolean[][] matrizDiagonales;
+    private Poligono poligono;
+    private double zoom;
 
     /**
      * Method description
@@ -69,16 +64,33 @@ public class PanelGraphiclView extends JPanel {
         // Si existe un poligono
         if (poligono != null) {
             Graphics2D g2D = (Graphics2D) g;
-
+            g2D.setStroke(new BasicStroke(2));
             g2D.drawPolygon(poligono);
 
             // Si la triangulacion ya fue calculada
-            if (matrizCuerdas != null) {
-                for (int i = 0; i < matrizCuerdas.length; i++) {
-                    for (int j = 0; j < matrizCuerdas[i].length; j++) {
-                        if (matrizCuerdas[i][j]) {
+            if (matrizDiagonales != null) {
+
+                Random rand = new Random();
+                for (int i = 0; i < matrizDiagonales.length; i++) {
+                    for (int j = 0; j < matrizDiagonales[i].length; j++) {
+                        if (matrizDiagonales[i][j]) {
+                            int[] xpointss = Arrays.copyOfRange(poligono.getXpoints(), i, j + 1);
+                            int[] ypointss = Arrays.copyOfRange(poligono.getYpoints(), i, j + 1);
+                            int length = xpointss.length;
+                            g2D.setColor(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
+                            g2D.fillPolygon(xpointss, ypointss, length);
+                        }
+                    }
+                }
+                
+                // Pintar Nuevamente las Lineas
+                for (int i = 0; i < matrizDiagonales.length; i++) {
+                    for (int j = 0; j < matrizDiagonales[i].length; j++) {
+                        if (matrizDiagonales[i][j]) {
+                            g2D.setColor(Color.black);
+                            g2D.setStroke(new BasicStroke(2));
                             g2D.drawLine(poligono.getXpoints()[i], poligono.getYpoints()[i], poligono.getXpoints()[j],
-                                         poligono.getYpoints()[j]);
+                                    poligono.getYpoints()[j]);
                         }
                     }
                 }
@@ -90,7 +102,7 @@ public class PanelGraphiclView extends JPanel {
                 g2D.fillOval(poligono.getXpoints()[i] - 5, poligono.getYpoints()[i] - 5, 10, 10);
                 g2D.setColor(Color.black);
                 g2D.drawString("[" + poligono.getCartesianXpoints()[i] + "," + poligono.getCartesianYpoints()[i] + "]",
-                               poligono.getXpoints()[i], poligono.getYpoints()[i]);
+                        poligono.getXpoints()[i], poligono.getYpoints()[i]);
             }
         }
     }
@@ -120,7 +132,7 @@ public class PanelGraphiclView extends JPanel {
      * @param matrizCuerdas
      */
     public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
-        this.matrizCuerdas = matrizCuerdas;
+        this.matrizDiagonales = matrizCuerdas;
     }
 
     /**
