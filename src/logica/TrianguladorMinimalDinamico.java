@@ -71,10 +71,8 @@ public class TrianguladorMinimalDinamico {
                     matrizCostos[i][j] = new Celda(-1, -1);
                 }
 
-                System.out.print(matrizCostos[i][j].getCosto() + " ");
             }
 
-            System.out.print("\n");
         }
     }
 
@@ -117,11 +115,9 @@ public class TrianguladorMinimalDinamico {
      * @return
      */
     public double calcularTriangulacion(int i, int s) {
-        System.out.println("Triangulacion Deseada - C" + i + "" + s);
 
         // Es necesario saber si el valor ya fue calculado
         if (matrizCostos[s - 2][i].getCosto() != -1) {
-            System.out.println("Ya calculado - C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
             return matrizCostos[s - 2][i].getCosto();
         }                                                                              // Si no esta se calcula!
@@ -129,7 +125,6 @@ public class TrianguladorMinimalDinamico {
             Celda minimo = new Celda(100000000, -1);
 
             for (int k = 1; k <= s - 2; k++) {
-                System.out.println("K: " + k);
 
                 double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
                                + Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
@@ -140,7 +135,6 @@ public class TrianguladorMinimalDinamico {
             }
 
             matrizCostos[s - 2][i] = minimo;
-            System.out.println("Recien Calculado C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
             return minimo.getCosto();
         }
@@ -169,20 +163,6 @@ public class TrianguladorMinimalDinamico {
 
             construirSolucionOptima(i, k + 1);
             construirSolucionOptima(i + k, s - k);
-        }
-    }
-
-    /**
-     * Method description
-     *
-     */
-    public void imprimirMatrizDiagonales() {
-        for (int i = 0; i < poligono.getNpoints(); i++) {
-            for (int j = 0; j < poligono.getNpoints(); j++) {
-                System.out.print(matrizCuerdas[i][j] + " ");
-            }
-
-            System.out.print("\n");
         }
     }
 

@@ -77,7 +77,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabelResultado = new javax.swing.JLabel();
         jButtonLoad = new javax.swing.JButton();
         jLabelZomm = new javax.swing.JLabel();
-        jButtonDinamico1 = new javax.swing.JButton();
+        jButtonVoraz = new javax.swing.JButton();
         jButtonZoomMenos = new javax.swing.JButton();
         jButtonZoomMas = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
@@ -189,15 +189,15 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jLabelZomm);
         jLabelZomm.setBounds(20, 230, 100, 19);
 
-        jButtonDinamico1.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
-        jButtonDinamico1.setText("Voraz");
-        jButtonDinamico1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoraz.setFont(new java.awt.Font("Trebuchet MS", 0, 17)); // NOI18N
+        jButtonVoraz.setText("Voraz");
+        jButtonVoraz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDinamico1ActionPerformed(evt);
+                jButtonVorazActionPerformed(evt);
             }
         });
-        jPanelPrincipal.add(jButtonDinamico1);
-        jButtonDinamico1.setBounds(20, 400, 160, 40);
+        jPanelPrincipal.add(jButtonVoraz);
+        jButtonVoraz.setBounds(20, 400, 160, 40);
 
         jButtonZoomMenos.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jButtonZoomMenos.setText("-");
@@ -292,7 +292,6 @@ public class MainFrame extends javax.swing.JFrame {
         TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
         jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianDinamico.calcularTriangulacion(0, poligono.npoints)));
         trianDinamico.construirSolucionOptima(0, poligono.npoints);
-        trianDinamico.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
         jPanelGraphiclView.repaint();
 
@@ -326,17 +325,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonLoadActionPerformed
 
-    private void jButtonDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamico1ActionPerformed
+    private void jButtonVorazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVorazActionPerformed
 
         TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
         jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianVoraz.calcularTriangulacion(0, poligono.npoints)));
         trianVoraz.construirSolucionOptima(0, poligono.npoints);
-        trianVoraz.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
         jPanelGraphiclView.repaint();
-        trianVoraz.imprimirMatrizCostos();
 
-    }//GEN-LAST:event_jButtonDinamico1ActionPerformed
+    }//GEN-LAST:event_jButtonVorazActionPerformed
 
     private void jButtonZoomMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMenosActionPerformed
 
@@ -363,10 +360,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonZoomMasActionPerformed
 
     private void graficarPoligono() {
-
-        //Coordenadas Iniciales para Centrar (Incompleto)
-        System.out.println("Width" + poligono.getWidth());
-        System.out.println("Height" + poligono.getHeight());
 
         int initialX = (jPanelGraphiclView.getWidth() - poligono.getWidth()) / 2;
         int initialY = (jPanelGraphiclView.getHeight() - poligono.getHeight()) / 2;
@@ -412,8 +405,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDinamico;
-    private javax.swing.JButton jButtonDinamico1;
     private javax.swing.JButton jButtonLoad;
+    private javax.swing.JButton jButtonVoraz;
     private javax.swing.JButton jButtonZoomMas;
     private javax.swing.JButton jButtonZoomMenos;
     private javax.swing.JLabel jLabelLogo;

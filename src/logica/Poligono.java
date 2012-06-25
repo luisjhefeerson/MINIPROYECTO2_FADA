@@ -91,7 +91,6 @@ public class Poligono extends Polygon {
 
         cx = (xMax + xMin) / 2;
         cy = (yMax + yMin) / 2;
-        System.out.println("Centro cartesiano: x" + cx + " Y: " + cy);
     }
 
     /**
@@ -109,12 +108,10 @@ public class Poligono extends Polygon {
 
         xpoints = new int[npoints];
         ypoints = new int[npoints];
-        System.out.println("Convirtiendo coordenadas cartesianas a AWT");
 
         for (int i = 0; i < ypoints.length; i++) {
             xpoints[i] = cartesianXpoints[i] - xMin;
             ypoints[i] = yMax - cartesianYpoints[i];
-            System.out.println("x: " + xpoints[i] + " y: " + ypoints[i]);
         }
     }
 
@@ -131,7 +128,6 @@ public class Poligono extends Polygon {
         for (int i = 0; i < npoints; i++) {
             copyCartisianX[i] = (int) (cartesianXpoints[i] * zoomFactor);
             copyCartisianY[i] = (int) (cartesianYpoints[i] * zoomFactor);
-            System.out.println("x: " + copyCartisianX[i] + " y: " + copyCartisianY[i]);
         }
 
         convertirPuntosCartesianos(copyCartisianX, copyCartisianY);
@@ -211,7 +207,7 @@ public class Poligono extends Polygon {
             return false;
         }
 
-        System.out.println("archivo cargado");
+        System.out.println("Archivo Cargado");
 
         return true;
     }
