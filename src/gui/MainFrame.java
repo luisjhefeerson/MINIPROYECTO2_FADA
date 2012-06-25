@@ -387,24 +387,27 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonZoomMasActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
 
-        selectorArchivo.setFileFilter(filter);
-        selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        if (poligono != null && (trianDinamico != null || trianVoraz != null)) {
+            JFileChooser selectorArchivo = new JFileChooser("./pruebas/");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
 
-        int resultado = selectorArchivo.showSaveDialog(this);
+            selectorArchivo.setFileFilter(filter);
+            selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        if (resultado != JFileChooser.CANCEL_OPTION) {
-            File selectedFile = new File(selectorArchivo.getSelectedFile().getAbsolutePath() + ".txt");
+            int resultado = selectorArchivo.showSaveDialog(this);
 
-            if (trianDinamico != null && trianVoraz == null) {
-                trianDinamico.saveToFile(selectedFile);
+            if (resultado != JFileChooser.CANCEL_OPTION) {
+                File selectedFile = new File(selectorArchivo.getSelectedFile().getAbsolutePath() + ".txt");
+
+                if (trianDinamico != null && trianVoraz == null) {
+                    trianDinamico.saveToFile(selectedFile);
+                }
+                if (trianDinamico == null && trianVoraz != null) {
+                    trianVoraz.saveToFile(selectedFile);
+                }
+
             }
-            if (trianDinamico == null && trianVoraz != null) {
-                trianVoraz.saveToFile(selectedFile);
-            }
-
         }
 
     }//GEN-LAST:event_jButtonGuardarActionPerformed
