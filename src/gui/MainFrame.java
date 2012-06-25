@@ -360,8 +360,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void graficarPoligono() {
 
-        jPanelGraphiclView.setBounds(0, 0, 1000, 1000);
-        
         //Coordenadas Iniciales para Centrar (Incompleto)
         System.out.println("Width" + poligono.getWidth());
         System.out.println("Height" + poligono.getHeight());
