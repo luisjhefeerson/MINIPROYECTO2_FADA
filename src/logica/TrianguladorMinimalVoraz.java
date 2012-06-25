@@ -127,7 +127,16 @@ public class TrianguladorMinimalVoraz {
             double distanciaMinima=100000000;
             int kelegante=-1;
 
-            for (int k = 1; k <= s - 2; k++) {
+            int inicio=1;
+            int hasta = s-2;
+            if (hasta>1) {
+                hasta = s-3;
+            }
+            if (hasta>2) {
+                inicio=2;
+            }
+            
+            for (int k = inicio; k <= hasta; k++) {
                 System.out.println("K: " + k);
 
                 double distanciaMinima1 = Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
