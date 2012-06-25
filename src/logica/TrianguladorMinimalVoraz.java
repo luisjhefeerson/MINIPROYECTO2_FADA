@@ -70,9 +70,7 @@ public class TrianguladorMinimalVoraz {
                 } else {
                     matrizCostos[i][j] = new Celda(-1, -1);
                 }
-
             }
-
         }
     }
 
@@ -118,12 +116,11 @@ public class TrianguladorMinimalVoraz {
 
         // Es necesario saber si el valor ya fue calculado
         if (matrizCostos[s - 2][i].getCosto() != -1) {
-
             return matrizCostos[s - 2][i].getCosto();
         }                                                                                       // Si no esta se calcula!
                 else {
             double distanciaMinima = 100000000;
-            int    kOptimo       = -1;
+            int    kOptimo         = -1;
             int    inicio          = 1;
             int    hasta           = s - 2;
 
@@ -137,18 +134,16 @@ public class TrianguladorMinimalVoraz {
             }
 
             for (int k = inicio; k <= hasta; k++) {
-
                 double distanciaMinima1 = Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
 
                 if (distanciaMinima1 < distanciaMinima) {
                     distanciaMinima = distanciaMinima1;
-                    kOptimo       = k;
+                    kOptimo         = k;
                 }
             }
 
-            double costo = calcularTriangulacion(i, kOptimo + 1)
-                           + calcularTriangulacion(i + kOptimo, s - kOptimo) + Distancia(i, i + kOptimo)
-                           + Distancia(i + kOptimo, i + s - 1);                               // Revisar
+            double costo = calcularTriangulacion(i, kOptimo + 1) + calcularTriangulacion(i + kOptimo, s - kOptimo)
+                           + Distancia(i, i + kOptimo) + Distancia(i + kOptimo, i + s - 1);     // Revisar
 
             matrizCostos[s - 2][i] = new Celda(costo, kOptimo);
 

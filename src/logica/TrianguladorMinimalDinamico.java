@@ -70,9 +70,7 @@ public class TrianguladorMinimalDinamico {
                 } else {
                     matrizCostos[i][j] = new Celda(-1, -1);
                 }
-
             }
-
         }
     }
 
@@ -118,14 +116,12 @@ public class TrianguladorMinimalDinamico {
 
         // Es necesario saber si el valor ya fue calculado
         if (matrizCostos[s - 2][i].getCosto() != -1) {
-
             return matrizCostos[s - 2][i].getCosto();
         }                                                                              // Si no esta se calcula!
                 else {
             Celda minimo = new Celda(100000000, -1);
 
             for (int k = 1; k <= s - 2; k++) {
-
                 double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
                                + Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
 
