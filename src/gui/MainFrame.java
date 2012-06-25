@@ -40,10 +40,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private Poligono poligono;
     private PanelGraphiclView jPanelGraphiclView;
+    double zoomFactor;
 
     public MainFrame() {
 
         initComponents();
+        zoomFactor = 1;
         jPanelGraphiclView = new PanelGraphiclView();
         jPanelGraphiclView.setLayout(null);
         jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
@@ -71,9 +73,10 @@ public class MainFrame extends javax.swing.JFrame {
         jButtonDinamico = new javax.swing.JButton();
         jLabelResultado = new javax.swing.JLabel();
         jButtonLoad = new javax.swing.JButton();
-        jSliderZoom = new javax.swing.JSlider();
         jLabelZomm = new javax.swing.JLabel();
         jButtonDinamico1 = new javax.swing.JButton();
+        jButtonZoomMenos = new javax.swing.JButton();
+        jButtonZoomMas = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         jMISalir = new javax.swing.JMenuItem();
@@ -178,18 +181,6 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jButtonLoad);
         jButtonLoad.setBounds(25, 150, 150, 31);
 
-        jSliderZoom.setMaximum(40);
-        jSliderZoom.setMinimum(1);
-        jSliderZoom.setToolTipText("");
-        jSliderZoom.setValue(20);
-        jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSliderZoomStateChanged(evt);
-            }
-        });
-        jPanelPrincipal.add(jSliderZoom);
-        jSliderZoom.setBounds(10, 210, 180, 50);
-
         jLabelZomm.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jLabelZomm.setText("ZOOM:");
         jPanelPrincipal.add(jLabelZomm);
@@ -204,6 +195,26 @@ public class MainFrame extends javax.swing.JFrame {
         });
         jPanelPrincipal.add(jButtonDinamico1);
         jButtonDinamico1.setBounds(25, 320, 150, 31);
+
+        jButtonZoomMenos.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        jButtonZoomMenos.setText("-");
+        jButtonZoomMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZoomMenosActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonZoomMenos);
+        jButtonZoomMenos.setBounds(50, 210, 45, 45);
+
+        jButtonZoomMas.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        jButtonZoomMas.setText("+");
+        jButtonZoomMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonZoomMasActionPerformed(evt);
+            }
+        });
+        jPanelPrincipal.add(jButtonZoomMas);
+        jButtonZoomMas.setBounds(110, 210, 45, 45);
 
         getContentPane().add(jPanelPrincipal);
         jPanelPrincipal.setBounds(0, 0, 1000, 600);
@@ -297,6 +308,7 @@ public class MainFrame extends javax.swing.JFrame {
             if (poligono.loadFromFile(selectedFile)) {
 
                 jTextArea.setText(poligono.getTextoEnArchivo());
+                zoomFactor=1;
                 graficarPoligono();
                 jPanelGraphiclView.setMatrizCuerdas(null);
 
@@ -309,15 +321,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonLoadActionPerformed
 
-    private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
-
-        int zoom = jSliderZoom.getValue();
-        System.out.println("zoom: " + zoom);
-
-        poligono.escalarAWT(zoom);
-        graficarPoligono();
-    }//GEN-LAST:event_jSliderZoomStateChanged
-
     private void jButtonDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamico1ActionPerformed
 
         TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
@@ -329,6 +332,30 @@ public class MainFrame extends javax.swing.JFrame {
         trianVoraz.imprimirMatrizCostos();
 
     }//GEN-LAST:event_jButtonDinamico1ActionPerformed
+
+    private void jButtonZoomMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMenosActionPerformed
+
+        if (zoomFactor > 1) {
+            zoomFactor--;
+        } else if (zoomFactor>0){
+            zoomFactor = zoomFactor - 0.1;
+        }
+        poligono.escalarAWT(zoomFactor);
+        graficarPoligono();
+
+    }//GEN-LAST:event_jButtonZoomMenosActionPerformed
+
+    private void jButtonZoomMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMasActionPerformed
+
+        if (zoomFactor >= 1) {
+            zoomFactor++;
+        } else {
+            zoomFactor = zoomFactor + 0.1;
+        }
+        poligono.escalarAWT(zoomFactor);
+        graficarPoligono();
+
+    }//GEN-LAST:event_jButtonZoomMasActionPerformed
 
     private void graficarPoligono() {
 
@@ -382,6 +409,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDinamico;
     private javax.swing.JButton jButtonDinamico1;
     private javax.swing.JButton jButtonLoad;
+    private javax.swing.JButton jButtonZoomMas;
+    private javax.swing.JButton jButtonZoomMenos;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JLabel jLabelResultado;
     private javax.swing.JLabel jLabelSubtitulo;
@@ -402,7 +431,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSlider jSliderZoom;
     private javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
 }

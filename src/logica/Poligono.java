@@ -27,9 +27,12 @@
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
 //*************************************************************
+
+
 package logica;
 
 //~--- JDK imports ------------------------------------------------------------
+
 import java.awt.Point;
 import java.awt.Polygon;
 
@@ -46,20 +49,18 @@ import java.util.StringTokenizer;
  * @author gadolforl
  */
 public class Poligono extends Polygon {
-
-    int[] cartesianXpoints;
-    int[] cartesianYpoints;
-    double cx, cy;
-    int height;
+    int[]          cartesianXpoints;
+    int[]          cartesianYpoints;
+    double         cx, cy;
+    int            height;
     private String textoEnArchivo;
-    int width;
+    int            width;
 
     /**
      * Constructs ...
      *
      */
-    public Poligono() {
-    }
+    public Poligono() {}
 
     /**
      * Constructs ...
@@ -71,7 +72,7 @@ public class Poligono extends Polygon {
      */
     public Poligono(int[] cartesianXpoints, int[] cartesianYpoints, int npoints) {
         super();
-        this.npoints = npoints;
+        this.npoints          = npoints;
         this.cartesianXpoints = cartesianXpoints;
         this.cartesianYpoints = cartesianYpoints;
         centroCartesiano();
@@ -121,19 +122,15 @@ public class Poligono extends Polygon {
      * Method description
      *
      *
-     * @param zoom
+     * @param zoomFactor
      */
-    public void escalarAWT(int zoom) {
-
-        double factor = zoom;
-        System.out.println("PUNTOS CON ZOOM:" + zoom + "Factor:" + factor);
-
+    public void escalarAWT(double zoomFactor) {
         int[] copyCartisianX = new int[npoints];
         int[] copyCartisianY = new int[npoints];
 
         for (int i = 0; i < npoints; i++) {
-            copyCartisianX[i] = (int) (cartesianXpoints[i] * factor);
-            copyCartisianY[i] = (int) (cartesianYpoints[i] * factor);
+            copyCartisianX[i] = (int) (cartesianXpoints[i] * zoomFactor);
+            copyCartisianY[i] = (int) (cartesianYpoints[i] * zoomFactor);
             System.out.println("x: " + copyCartisianX[i] + " y: " + copyCartisianY[i]);
         }
 
@@ -150,7 +147,7 @@ public class Poligono extends Polygon {
      */
     public boolean loadFromFile(File selectedFile) {
         BufferedReader datos = null;
-        String lectura;
+        String         lectura;
 
         try {
             datos = new BufferedReader(new FileReader(selectedFile));
@@ -180,13 +177,13 @@ public class Poligono extends Polygon {
     private boolean procesarFileContents() {
         StringTokenizer tokens = new StringTokenizer(textoEnArchivo);
 
-        npoints = tokens.countTokens() / 2;
+        npoints          = tokens.countTokens() / 2;
         cartesianXpoints = new int[npoints];
         cartesianYpoints = new int[npoints];
 
         try {
             int[] x = new int[tokens.countTokens()];
-            int h = 0;
+            int   h = 0;
 
             while (tokens.hasMoreElements()) {
                 x[h] = Integer.parseInt(tokens.nextToken());
@@ -194,7 +191,7 @@ public class Poligono extends Polygon {
             }
 
             int j = 0,
-                    w = 0;
+                w = 0;
 
             for (int i = 0; i < x.length; i++) {
                 if ((i % 2) == 0) {

@@ -21,8 +21,18 @@
    </void>
   </void>
   <void property="fileEntries">
-   <array class="jindent.commander.FileEntry" length="1">
+   <array class="jindent.commander.FileEntry" length="2">
     <void index="0">
+     <object class="jindent.commander.FileEntry">
+      <void property="fileCount">
+       <int>1</int>
+      </void>
+      <void property="filename">
+       <string>/home/gustavo/PROGRAMMING JUAN-PABLO/NetBeansProjects/MINIPROYECTO2_FADA/src/gui/PanelGraphiclView.java</string>
+      </void>
+     </object>
+    </void>
+    <void index="1">
      <object class="jindent.commander.FileEntry">
       <void property="fileCount">
        <int>5</int>
@@ -61,8 +71,8 @@
   </void>
   <void property="frameBounds">
    <object class="java.awt.Rectangle">
-    <int>-1</int>
-    <int>-4</int>
+    <int>0</int>
+    <int>0</int>
     <int>1368</int>
     <int>773</int>
    </object>
@@ -236,6 +246,15 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.formatJavaDocComments</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.formatJavaDocComments</string>
+       <void property="value">
+        <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.javaDocAnnotationType</string>
       <object class="jindent.settings.StringArraySetting">
        <string>cpp.javaDocAnnotationType</string>
@@ -244,15 +263,6 @@
  * Annotation type description
  *
  */</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.formatJavaDocComments</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.formatJavaDocComments</string>
-       <void property="value">
-        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -284,18 +294,18 @@
       </object>
      </void>
      <void method="put">
-      <string>java.createPrivateInterfaceJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.createPrivateInterfaceJavaDocs</string>
-      </object>
-     </void>
-     <void method="put">
       <string>java.insertSeparatorCommentsOnlyBetweenTypeDeclarations</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.insertSeparatorCommentsOnlyBetweenTypeDeclarations</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.createPrivateInterfaceJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.createPrivateInterfaceJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -559,18 +569,18 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.createPrivateClassJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.createPrivateClassJavaDocs</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.spaceBeforeTernaryColons</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.spaceBeforeTernaryColons</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.createPrivateClassJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createPrivateClassJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -651,18 +661,18 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.paddingBrackets</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingBrackets</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.spaceBeforePointerAmpersandsInTypes</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.spaceBeforePointerAmpersandsInTypes</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.paddingBrackets</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.paddingBrackets</string>
       </object>
      </void>
      <void method="put">
@@ -675,18 +685,18 @@
       </object>
      </void>
      <void method="put">
-      <string>java.wrapLines</string>
+      <string>cpp.insertNestedClassesSeparator</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.wrapLines</string>
+       <string>cpp.insertNestedClassesSeparator</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
       </object>
      </void>
      <void method="put">
-      <string>cpp.insertNestedClassesSeparator</string>
+      <string>java.wrapLines</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>cpp.insertNestedClassesSeparator</string>
+       <string>java.wrapLines</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -708,18 +718,18 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.createPrivateConstructorJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.createPrivateConstructorJavaDocs</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.createFriendlyConstructorJavaDocs</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.createFriendlyConstructorJavaDocs</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.createPrivateConstructorJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createPrivateConstructorJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -771,6 +781,15 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.specialElseIfTreatment</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.specialElseIfTreatment</string>
+       <void property="value">
+        <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+     <void method="put">
       <string>java.blankLinesBeforeFilteredCode</string>
       <object class="jindent.settings.NumberSetting">
        <string>java.blankLinesBeforeFilteredCode</string>
@@ -780,12 +799,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.specialElseIfTreatment</string>
+      <string>cpp.createProtectedMethodJavaDocs</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>cpp.specialElseIfTreatment</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
+       <string>cpp.createProtectedMethodJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -798,24 +814,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.createProtectedMethodJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createProtectedMethodJavaDocs</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.headerDetectionExcludeKeys</string>
       <object class="jindent.settings.StringSetting">
        <string>cpp.headerDetectionExcludeKeys</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>java.paddingMultiplicativeOperators</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.paddingMultiplicativeOperators</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
       </object>
      </void>
      <void method="put">
@@ -828,9 +829,12 @@
       </object>
      </void>
      <void method="put">
-      <string>java.createPublicEnumJavaDocs</string>
+      <string>java.paddingMultiplicativeOperators</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.createPublicEnumJavaDocs</string>
+       <string>java.paddingMultiplicativeOperators</string>
+       <void property="value">
+        <boolean>true</boolean>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -843,19 +847,16 @@
       </object>
      </void>
      <void method="put">
+      <string>java.createPublicEnumJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.createPublicEnumJavaDocs</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.blankLinesToSeparateStaticImportGroups</string>
       <object class="jindent.settings.NumberSetting">
        <string>java.blankLinesToSeparateStaticImportGroups</string>
        <void property="value">
-        <int>1</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>java.wrapFirstParameterOfMethodConstructorDeclarations</string>
-      <object class="jindent.settings.WrappingSetting">
-       <string>java.wrapFirstParameterOfMethodConstructorDeclarations</string>
-       <void property="index">
         <int>1</int>
        </void>
       </object>
@@ -866,6 +867,15 @@
        <string>cpp.constructorsSeparator</string>
        <void property="value">
         <string>--- constructors -</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.wrapFirstParameterOfMethodConstructorDeclarations</string>
+      <object class="jindent.settings.WrappingSetting">
+       <string>java.wrapFirstParameterOfMethodConstructorDeclarations</string>
+       <void property="index">
+        <int>1</int>
        </void>
       </object>
      </void>
@@ -918,20 +928,20 @@
       </object>
      </void>
      <void method="put">
-      <string>java.blankLinesAfterMethods</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesAfterMethods</string>
-       <void property="value">
-        <int>1</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.spaceBeforeIfParentheses</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.spaceBeforeIfParentheses</string>
        <void property="value">
         <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.blankLinesAfterMethods</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesAfterMethods</string>
+       <void property="value">
+        <int>1</int>
        </void>
       </object>
      </void>
@@ -951,11 +961,11 @@
       </object>
      </void>
      <void method="put">
-      <string>java.formatBlockComments</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.formatBlockComments</string>
+      <string>cpp.nestedClassesSeparator</string>
+      <object class="jindent.settings.StringSetting">
+       <string>cpp.nestedClassesSeparator</string>
        <void property="value">
-        <boolean>true</boolean>
+        <string>--- inner classes -</string>
        </void>
       </object>
      </void>
@@ -969,11 +979,11 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.nestedClassesSeparator</string>
-      <object class="jindent.settings.StringSetting">
-       <string>cpp.nestedClassesSeparator</string>
+      <string>java.formatBlockComments</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.formatBlockComments</string>
        <void property="value">
-        <string>--- inner classes -</string>
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -3141,15 +3151,6 @@
       </object>
      </void>
      <void method="put">
-      <string>java.insertFieldsSeparator</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.insertFieldsSeparator</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.maxArrayElementsInOneLine</string>
       <object class="jindent.settings.INumberSetting">
        <string>cpp.maxArrayElementsInOneLine</string>
@@ -3159,11 +3160,11 @@
       </object>
      </void>
      <void method="put">
-      <string>java.blankLinesBeforeLocalVariables</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesBeforeLocalVariables</string>
+      <string>java.insertFieldsSeparator</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.insertFieldsSeparator</string>
        <void property="value">
-        <int>1</int>
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -3177,11 +3178,11 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceAfterForSemicolons</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceAfterForSemicolons</string>
+      <string>java.blankLinesBeforeLocalVariables</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesBeforeLocalVariables</string>
        <void property="value">
-        <boolean>true</boolean>
+        <int>1</int>
        </void>
       </object>
      </void>
@@ -3191,6 +3192,15 @@
        <string>cpp.fieldsSeparator</string>
        <void property="value">
         <string>--- fields -</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.spaceAfterForSemicolons</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.spaceAfterForSemicolons</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -3213,20 +3223,20 @@
       </object>
      </void>
      <void method="put">
-      <string>java.blankLinesAfterFilteredCode</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesAfterFilteredCode</string>
-       <void property="value">
-        <int>1</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.initializersSeparator</string>
       <object class="jindent.settings.StringSetting">
        <string>cpp.initializersSeparator</string>
        <void property="value">
         <string>--- initializers -</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.blankLinesAfterFilteredCode</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesAfterFilteredCode</string>
+       <void property="value">
+        <int>1</int>
        </void>
       </object>
      </void>
@@ -3296,9 +3306,9 @@
       </object>
      </void>
      <void method="put">
-      <string>java.insertConstructorsSeparator</string>
+      <string>cpp.paddingBitwiseOperators</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.insertConstructorsSeparator</string>
+       <string>cpp.paddingBitwiseOperators</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -3314,9 +3324,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.paddingBitwiseOperators</string>
+      <string>java.insertConstructorsSeparator</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingBitwiseOperators</string>
+       <string>java.insertConstructorsSeparator</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -3329,15 +3339,15 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.blankLinesAfterIfDirectives</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>cpp.blankLinesAfterIfDirectives</string>
-      </object>
-     </void>
-     <void method="put">
       <string>java.optimizeImports</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.optimizeImports</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.blankLinesAfterIfDirectives</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>cpp.blankLinesAfterIfDirectives</string>
       </object>
      </void>
      <void method="put">
@@ -3359,20 +3369,20 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.alignAssignments</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.alignAssignments</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.blankLinesAfterUsingDirectives</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesAfterUsingDirectives</string>
        <void property="value">
         <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.alignAssignments</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.alignAssignments</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -3386,20 +3396,20 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.paddingIOOperators</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingIOOperators</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.blankLinesAfterHeader</string>
       <object class="jindent.settings.NZNumberSetting">
        <string>cpp.blankLinesAfterHeader</string>
        <void property="value">
         <int>3</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.paddingIOOperators</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.paddingIOOperators</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -3413,12 +3423,9 @@
       </object>
      </void>
      <void method="put">
-      <string>java.javaDocMethodException</string>
-      <object class="jindent.settings.StringArraySetting">
-       <string>java.javaDocMethodException</string>
-       <void property="value">
-        <string> * @throws $exceptionName$</string>
-       </void>
+      <string>cpp.createFriendlyFieldJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.createFriendlyFieldJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -3428,9 +3435,12 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.createFriendlyFieldJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createFriendlyFieldJavaDocs</string>
+      <string>java.javaDocMethodException</string>
+      <object class="jindent.settings.StringArraySetting">
+       <string>java.javaDocMethodException</string>
+       <void property="value">
+        <string> * @throws $exceptionName$</string>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -3461,15 +3471,6 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.blankLinesBeforeLineDirectives</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>cpp.blankLinesBeforeLineDirectives</string>
-       <void property="value">
-        <int>1</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>java.staticInitializersSeparator</string>
       <object class="jindent.settings.StringSetting">
        <string>java.staticInitializersSeparator</string>
@@ -3479,18 +3480,18 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.blankLinesBeforeFirstCaseBlock</string>
+      <string>cpp.blankLinesBeforeLineDirectives</string>
       <object class="jindent.settings.NumberSetting">
-       <string>cpp.blankLinesBeforeFirstCaseBlock</string>
+       <string>cpp.blankLinesBeforeLineDirectives</string>
+       <void property="value">
+        <int>1</int>
+       </void>
       </object>
      </void>
      <void method="put">
-      <string>cpp.wrapBecauseOfComments</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.wrapBecauseOfComments</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
+      <string>cpp.blankLinesBeforeFirstCaseBlock</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>cpp.blankLinesBeforeFirstCaseBlock</string>
       </object>
      </void>
      <void method="put">
@@ -3503,9 +3504,9 @@
       </object>
      </void>
      <void method="put">
-      <string>java.insertBracesIntoWhileStatements</string>
+      <string>cpp.wrapBecauseOfComments</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.insertBracesIntoWhileStatements</string>
+       <string>cpp.wrapBecauseOfComments</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -3515,6 +3516,15 @@
       <string>cpp.firstLevelIndent</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.firstLevelIndent</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.insertBracesIntoWhileStatements</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.insertBracesIntoWhileStatements</string>
+       <void property="value">
+        <boolean>true</boolean>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -3551,6 +3561,12 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.paddingForParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.paddingForParentheses</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.javaDocConstructorTop</string>
       <object class="jindent.settings.StringArraySetting">
        <string>java.javaDocConstructorTop</string>
@@ -3559,18 +3575,6 @@
  * Constructs ...
  *</string>
        </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.paddingForParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingForParentheses</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>java.blankLinesBetweenDifferentStatements</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesBetweenDifferentStatements</string>
       </object>
      </void>
      <void method="put">
@@ -3637,9 +3641,24 @@
       </object>
      </void>
      <void method="put">
+      <string>java.blankLinesBetweenDifferentStatements</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesBetweenDifferentStatements</string>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.blankLinesBeforeFilteredCode</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesBeforeFilteredCode</string>
+       <void property="value">
+        <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.blankLinesAfterInstanceInitializers</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>cpp.blankLinesAfterInstanceInitializers</string>
        <void property="value">
         <int>1</int>
        </void>
@@ -3651,15 +3670,6 @@
        <string>java.allowWrappingAfterAssignments</string>
        <void property="value">
         <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.blankLinesAfterInstanceInitializers</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>cpp.blankLinesAfterInstanceInitializers</string>
-       <void property="value">
-        <int>1</int>
        </void>
       </object>
      </void>
@@ -4152,6 +4162,12 @@
       </object>
      </void>
      <void method="put">
+      <string>java.spaceBeforeAssertParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.spaceBeforeAssertParentheses</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.wrapThrows</string>
       <object class="jindent.settings.WrappingSetting">
        <string>java.wrapThrows</string>
@@ -4161,9 +4177,12 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceBeforeAssertParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceBeforeAssertParentheses</string>
+      <string>cpp.importJDKSeparator</string>
+      <object class="jindent.settings.StringSetting">
+       <string>cpp.importJDKSeparator</string>
+       <void property="value">
+        <string>--- JDK imports -</string>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -4172,15 +4191,6 @@
        <string>java.insertBracesIntoIfElseStatements</string>
        <void property="value">
         <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.importJDKSeparator</string>
-      <object class="jindent.settings.StringSetting">
-       <string>cpp.importJDKSeparator</string>
-       <void property="value">
-        <string>--- JDK imports -</string>
        </void>
       </object>
      </void>
@@ -4197,24 +4207,15 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.alignExceedingAnnotationDefaults</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.alignExceedingAnnotationDefaults</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.avoidConfusingIndentationsForMethodConstructorDeclarations</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.avoidConfusingIndentationsForMethodConstructorDeclarations</string>
       </object>
      </void>
      <void method="put">
-      <string>java.blankLinesToSeparateImportGroups</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesToSeparateImportGroups</string>
-       <void property="value">
-        <int>1</int>
-       </void>
+      <string>cpp.alignExceedingAnnotationDefaults</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.alignExceedingAnnotationDefaults</string>
       </object>
      </void>
      <void method="put">
@@ -4227,9 +4228,12 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceBeforeThrowParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceBeforeThrowParentheses</string>
+      <string>java.blankLinesToSeparateImportGroups</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesToSeparateImportGroups</string>
+       <void property="value">
+        <int>1</int>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -4242,6 +4246,12 @@
       </object>
      </void>
      <void method="put">
+      <string>java.spaceBeforeThrowParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.spaceBeforeThrowParentheses</string>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.noSpacesBetweenEmptyForSemicolons</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.noSpacesBetweenEmptyForSemicolons</string>
@@ -4251,11 +4261,11 @@
       </object>
      </void>
      <void method="put">
-      <string>java.wrapThrowsExceptions</string>
-      <object class="jindent.settings.WrappingSetting">
-       <string>java.wrapThrowsExceptions</string>
-       <void property="index">
-        <int>1</int>
+      <string>cpp.spaceBeforePointerStarsInTypes</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.spaceBeforePointerStarsInTypes</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -4282,11 +4292,11 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.spaceBeforePointerStarsInTypes</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.spaceBeforePointerStarsInTypes</string>
-       <void property="value">
-        <boolean>true</boolean>
+      <string>java.wrapThrowsExceptions</string>
+      <object class="jindent.settings.WrappingSetting">
+       <string>java.wrapThrowsExceptions</string>
+       <void property="index">
+        <int>1</int>
        </void>
       </object>
      </void>
@@ -4330,18 +4340,18 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.createPrivateFieldJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.createPrivateFieldJavaDocs</string>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.optimizeImports</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.optimizeImports</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.createPrivateFieldJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createPrivateFieldJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -4378,20 +4388,20 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.javaDocMethodBottom</string>
-      <object class="jindent.settings.StringArraySetting">
-       <string>cpp.javaDocMethodBottom</string>
-       <void property="value">
-        <string> */</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.insertGetMethodsSeparator</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.insertGetMethodsSeparator</string>
        <void property="value">
         <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.javaDocMethodBottom</string>
+      <object class="jindent.settings.StringArraySetting">
+       <string>cpp.javaDocMethodBottom</string>
+       <void property="value">
+        <string> */</string>
        </void>
       </object>
      </void>
@@ -4423,18 +4433,18 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.indentPreprocessorDirectives</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.indentPreprocessorDirectives</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.maxEnumElementsInOneLine</string>
       <object class="jindent.settings.INumberSetting">
        <string>cpp.maxEnumElementsInOneLine</string>
        <void property="value">
         <int>3</int>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.indentPreprocessorDirectives</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.indentPreprocessorDirectives</string>
       </object>
      </void>
      <void method="put">
@@ -4459,15 +4469,21 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.maxNumOfMarkerAnnotationInOneLine</string>
+      <object class="jindent.settings.INumberSetting">
+       <string>cpp.maxNumOfMarkerAnnotationInOneLine</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.deleteEndOfLineComments</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.deleteEndOfLineComments</string>
       </object>
      </void>
      <void method="put">
-      <string>cpp.maxNumOfMarkerAnnotationInOneLine</string>
-      <object class="jindent.settings.INumberSetting">
-       <string>cpp.maxNumOfMarkerAnnotationInOneLine</string>
+      <string>cpp.combinePaddingParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.combinePaddingParentheses</string>
       </object>
      </void>
      <void method="put">
@@ -4480,24 +4496,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.combinePaddingParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.combinePaddingParentheses</string>
-      </object>
-     </void>
-     <void method="put">
       <string>java.footerInsertionMode</string>
       <object class="jindent.settings.FooterSetting">
        <string>java.footerInsertionMode</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>java.createFriendlyMethodJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.createFriendlyMethodJavaDocs</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
       </object>
      </void>
      <void method="put">
@@ -4506,6 +4507,15 @@
        <string>cpp.javaDocField</string>
        <void property="value">
         <string>/** Field description */</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.createFriendlyMethodJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.createFriendlyMethodJavaDocs</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -4519,15 +4529,6 @@
       </object>
      </void>
      <void method="put">
-      <string>java.paddingRelationalOperators</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.paddingRelationalOperators</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.spaceAfterTernaryColons</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.spaceAfterTernaryColons</string>
@@ -4537,9 +4538,12 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceAfterBangsAfterAndOr</string>
+      <string>java.paddingRelationalOperators</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceAfterBangsAfterAndOr</string>
+       <string>java.paddingRelationalOperators</string>
+       <void property="value">
+        <boolean>true</boolean>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -4552,11 +4556,32 @@
       </object>
      </void>
      <void method="put">
+      <string>java.spaceAfterBangsAfterAndOr</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.spaceAfterBangsAfterAndOr</string>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.blankLinesBeforeSingleLineComments</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesBeforeSingleLineComments</string>
        <void property="value">
         <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.paddingCastParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.paddingCastParentheses</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.footerDetectionSmartMode</string>
+      <object class="jindent.settings.INumberSetting">
+       <string>java.footerDetectionSmartMode</string>
+       <void property="value">
+        <int>3</int>
        </void>
       </object>
      </void>
@@ -4570,21 +4595,6 @@
       </object>
      </void>
      <void method="put">
-      <string>java.footerDetectionSmartMode</string>
-      <object class="jindent.settings.INumberSetting">
-       <string>java.footerDetectionSmartMode</string>
-       <void property="value">
-        <int>3</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.paddingCastParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingCastParentheses</string>
-      </object>
-     </void>
-     <void method="put">
       <string>java.specialElseIfTreatment</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.specialElseIfTreatment</string>
@@ -4594,15 +4604,15 @@
       </object>
      </void>
      <void method="put">
-      <string>general.logFile</string>
-      <object class="jindent.settings.LogFileSetting">
-       <string>general.logFile</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.alignTernaryExpressions</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.alignTernaryExpressions</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>general.logFile</string>
+      <object class="jindent.settings.LogFileSetting">
+       <string>general.logFile</string>
       </object>
      </void>
      <void method="put">
@@ -4618,20 +4628,20 @@
       </object>
      </void>
      <void method="put">
-      <string>java.conventionNotePosition</string>
-      <object class="jindent.settings.PositionSetting">
-       <string>java.conventionNotePosition</string>
-       <void property="index">
-        <int>2</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.avoidConfusingIndentations</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.avoidConfusingIndentations</string>
        <void property="value">
         <boolean>true</boolean>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.conventionNotePosition</string>
+      <object class="jindent.settings.PositionSetting">
+       <string>java.conventionNotePosition</string>
+       <void property="index">
+        <int>2</int>
        </void>
       </object>
      </void>
@@ -4681,18 +4691,18 @@
       </object>
      </void>
      <void method="put">
-      <string>java.createFriendlyClassJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.createFriendlyClassJavaDocs</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.alignAnnotationDefaults</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.alignAnnotationDefaults</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.createFriendlyClassJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.createFriendlyClassJavaDocs</string>
       </object>
      </void>
      <void method="put">
@@ -4741,20 +4751,20 @@
       </object>
      </void>
      <void method="put">
-      <string>java.javaDocConstructorException</string>
-      <object class="jindent.settings.StringArraySetting">
-       <string>java.javaDocConstructorException</string>
-       <void property="value">
-        <string> * @throws $exceptionName$</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.blankLinesBeforeBlockComments</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesBeforeBlockComments</string>
        <void property="value">
         <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.javaDocConstructorException</string>
+      <object class="jindent.settings.StringArraySetting">
+       <string>java.javaDocConstructorException</string>
+       <void property="value">
+        <string> * @throws $exceptionName$</string>
        </void>
       </object>
      </void>
@@ -4795,18 +4805,18 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.insertStaticInitializersSeparator</string>
+      <string>cpp.insertFieldsSeparator</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>cpp.insertStaticInitializersSeparator</string>
+       <string>cpp.insertFieldsSeparator</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
       </object>
      </void>
      <void method="put">
-      <string>cpp.insertFieldsSeparator</string>
+      <string>cpp.insertStaticInitializersSeparator</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>cpp.insertFieldsSeparator</string>
+       <string>cpp.insertStaticInitializersSeparator</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -4857,6 +4867,15 @@
        <string>cpp.maxLineLength</string>
        <void property="value">
         <int>120</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.inputTabulatorSize</string>
+      <object class="jindent.settings.NZNumberSetting">
+       <string>java.inputTabulatorSize</string>
+       <void property="value">
+        <int>8</int>
        </void>
       </object>
      </void>
@@ -4917,11 +4936,11 @@
       </object>
      </void>
      <void method="put">
-      <string>java.inputTabulatorSize</string>
-      <object class="jindent.settings.NZNumberSetting">
-       <string>java.inputTabulatorSize</string>
+      <string>cpp.wrapChainedMethodConstructorCalls</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.wrapChainedMethodConstructorCalls</string>
        <void property="value">
-        <int>8</int>
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -4929,15 +4948,6 @@
       <string>cpp.wrapLines</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.wrapLines</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.wrapChainedMethodConstructorCalls</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.wrapChainedMethodConstructorCalls</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -4959,20 +4969,20 @@
       </object>
      </void>
      <void method="put">
-      <string>java.deleteObsoleteJavaDocTags</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.deleteObsoleteJavaDocTags</string>
-       <void property="value">
-        <boolean>true</boolean>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.classesSeparator</string>
       <object class="jindent.settings.StringSetting">
        <string>cpp.classesSeparator</string>
        <void property="value">
         <string>--- classes -</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.deleteObsoleteJavaDocTags</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.deleteObsoleteJavaDocTags</string>
+       <void property="value">
+        <boolean>true</boolean>
        </void>
       </object>
      </void>
@@ -5046,15 +5056,6 @@
       </object>
      </void>
      <void method="put">
-      <string>java.nestedClassesSeparator</string>
-      <object class="jindent.settings.StringSetting">
-       <string>java.nestedClassesSeparator</string>
-       <void property="value">
-        <string>--- inner classes -</string>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>java.spaceAfterCommas</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.spaceAfterCommas</string>
@@ -5064,9 +5065,21 @@
       </object>
      </void>
      <void method="put">
-      <string>java.paddingForParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.paddingForParentheses</string>
+      <string>java.nestedClassesSeparator</string>
+      <object class="jindent.settings.StringSetting">
+       <string>java.nestedClassesSeparator</string>
+       <void property="value">
+        <string>--- inner classes -</string>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.minimumCommentIndent</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>cpp.minimumCommentIndent</string>
+       <void property="value">
+        <int>4</int>
+       </void>
       </object>
      </void>
      <void method="put">
@@ -5079,12 +5092,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.minimumCommentIndent</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>cpp.minimumCommentIndent</string>
-       <void property="value">
-        <int>4</int>
-       </void>
+      <string>java.paddingForParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.paddingForParentheses</string>
       </object>
      </void>
      <void method="put">
@@ -5109,6 +5119,12 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.singleIfStatementInOneLine</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.singleIfStatementInOneLine</string>
+      </object>
+     </void>
+     <void method="put">
       <string>cpp.blankLinesBetweenCaseBlocks</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesBetweenCaseBlocks</string>
@@ -5118,27 +5134,9 @@
       </object>
      </void>
      <void method="put">
-      <string>cpp.singleIfStatementInOneLine</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.singleIfStatementInOneLine</string>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.wrapComparisonOperators</string>
       <object class="jindent.settings.BAWrappingSetting">
        <string>cpp.wrapComparisonOperators</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.createProtectedConstructorJavaDocs</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.createProtectedConstructorJavaDocs</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.paddingExpressionParentheses</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.paddingExpressionParentheses</string>
       </object>
      </void>
      <void method="put">
@@ -5151,21 +5149,21 @@
       </object>
      </void>
      <void method="put">
+      <string>cpp.paddingExpressionParentheses</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.paddingExpressionParentheses</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.createProtectedConstructorJavaDocs</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.createProtectedConstructorJavaDocs</string>
+      </object>
+     </void>
+     <void method="put">
       <string>java.combinePaddingParentheses</string>
       <object class="jindent.settings.BooleanSetting">
        <string>java.combinePaddingParentheses</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.alignFirstTernaryExpression</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>cpp.alignFirstTernaryExpression</string>
-      </object>
-     </void>
-     <void method="put">
-      <string>java.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
       </object>
      </void>
      <void method="put">
@@ -5175,6 +5173,18 @@
        <void property="value">
         <int>1</int>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
+      </object>
+     </void>
+     <void method="put">
+      <string>cpp.alignFirstTernaryExpression</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>cpp.alignFirstTernaryExpression</string>
       </object>
      </void>
      <void method="put">
@@ -5193,6 +5203,15 @@
       <string>cpp.blankLinesAfterMacroFunctions</string>
       <object class="jindent.settings.NumberSetting">
        <string>cpp.blankLinesAfterMacroFunctions</string>
+       <void property="value">
+        <int>1</int>
+       </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.blankLinesBeforeContinueStatements</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>java.blankLinesBeforeContinueStatements</string>
        <void property="value">
         <int>1</int>
        </void>
@@ -5255,21 +5274,18 @@
       </object>
      </void>
      <void method="put">
-      <string>java.blankLinesBeforeContinueStatements</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>java.blankLinesBeforeContinueStatements</string>
-       <void property="value">
-        <int>1</int>
-       </void>
-      </object>
-     </void>
-     <void method="put">
       <string>cpp.insertSetMethodsSeparator</string>
       <object class="jindent.settings.BooleanSetting">
        <string>cpp.insertSetMethodsSeparator</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
+      </object>
+     </void>
+     <void method="put">
+      <string>java.spaceBeforeCommas</string>
+      <object class="jindent.settings.BooleanSetting">
+       <string>java.spaceBeforeCommas</string>
       </object>
      </void>
      <void method="put">
@@ -5282,9 +5298,9 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceBeforeCommas</string>
-      <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceBeforeCommas</string>
+      <string>cpp.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
+      <object class="jindent.settings.NumberSetting">
+       <string>cpp.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
       </object>
      </void>
      <void method="put">
@@ -5294,12 +5310,6 @@
        <void property="value">
         <boolean>true</boolean>
        </void>
-      </object>
-     </void>
-     <void method="put">
-      <string>cpp.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
-      <object class="jindent.settings.NumberSetting">
-       <string>cpp.indentWrappedRightParenthesisOfMethodConstructorCalls</string>
       </object>
      </void>
      <void method="put">
@@ -5318,18 +5328,18 @@
       </object>
      </void>
      <void method="put">
-      <string>java.spaceBeforeCaseColons</string>
+      <string>java.labelNewLine</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.spaceBeforeCaseColons</string>
+       <string>java.labelNewLine</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
       </object>
      </void>
      <void method="put">
-      <string>java.labelNewLine</string>
+      <string>java.spaceBeforeCaseColons</string>
       <object class="jindent.settings.BooleanSetting">
-       <string>java.labelNewLine</string>
+       <string>java.spaceBeforeCaseColons</string>
        <void property="value">
         <boolean>true</boolean>
        </void>
@@ -10026,7 +10036,7 @@
     <int>-1</int>
    </void>
    <void property="verticalDividerLocation">
-    <int>273</int>
+    <int>204</int>
    </void>
   </void>
   <void property="settingsSplitpaneSettings">
