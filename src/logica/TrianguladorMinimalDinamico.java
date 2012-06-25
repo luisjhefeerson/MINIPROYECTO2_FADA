@@ -9,7 +9,7 @@
 //
 // ARCHIVO: TrianguladorMinimalDinamico.java
 //
-// FECHA:  24.06.12
+// FECHA:  25.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743
@@ -27,9 +27,12 @@
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
 //*************************************************************
+
+
 package logica;
 
 //~--- JDK imports ------------------------------------------------------------
+
 import java.awt.Point;
 
 /**
@@ -37,10 +40,9 @@ import java.awt.Point;
  * @author gadolforl
  */
 public class TrianguladorMinimalDinamico {
-
-    private Celda[][] matrizCostos;
+    private Celda[][]   matrizCostos;
     private boolean[][] matrizCuerdas;
-    private Poligono poligono;
+    private Poligono    poligono;
 
     /**
      * Constructs ...
@@ -50,7 +52,7 @@ public class TrianguladorMinimalDinamico {
      */
     public TrianguladorMinimalDinamico(Poligono poligono) {
         this.poligono = poligono;
-        matrizCostos = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
+        matrizCostos  = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
         matrizCuerdas = new boolean[poligono.getNpoints()][poligono.getNpoints()];
 
         for (int i = 0; i < poligono.getNpoints(); i++) {
@@ -95,11 +97,11 @@ public class TrianguladorMinimalDinamico {
             return d;
         } else {
             d = Math.sqrt(
-                    Math.pow(
+                Math.pow(
                     poligono.getCartesianXpoints()[indexVertice1] - poligono.getCartesianXpoints()[indexVertice2],
                     2) + Math.pow(
-                    poligono.getCartesianYpoints()[indexVertice1] - poligono.getCartesianYpoints()[indexVertice2],
-                    2));
+                        poligono.getCartesianYpoints()[indexVertice1] - poligono.getCartesianYpoints()[indexVertice2],
+                        2));
 
             return d;
         }
@@ -122,15 +124,15 @@ public class TrianguladorMinimalDinamico {
             System.out.println("Ya calculado - C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
             return matrizCostos[s - 2][i].getCosto();
-        } // Si no esta se calcula!
-        else {
+        }                                                                              // Si no esta se calcula!
+                else {
             Celda minimo = new Celda(100000000, -1);
 
             for (int k = 1; k <= s - 2; k++) {
                 System.out.println("K: " + k);
 
                 double costo = calcularTriangulacion(i, k + 1) + calcularTriangulacion(i + k, s - k)
-                        + Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
+                               + Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
 
                 if (costo < minimo.getCosto()) {
                     minimo = new Celda(costo, k);
@@ -185,6 +187,7 @@ public class TrianguladorMinimalDinamico {
     }
 
     // <editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
+
     /**
      * Get the value of matrizCostos
      *
@@ -222,5 +225,6 @@ public class TrianguladorMinimalDinamico {
     public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
         this.matrizCuerdas = matrizCuerdas;
     }
+
     // </editor-fold>
 }

@@ -9,7 +9,7 @@
 //
 // ARCHIVO: FuncionesAuxiliares.java
 //
-// FECHA:  24.06.12
+// FECHA:  25.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743

@@ -7,9 +7,9 @@
 //
 // FECHA INICIACION: JUNIO DE 2012
 //
-// ARCHIVO: TrianguladorMinimalDinamico.java
+// ARCHIVO: TrianguladorMinimalVoraz.java
 //
-// FECHA:  24.06.12
+// FECHA:  25.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743
@@ -27,9 +27,12 @@
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
 //*************************************************************
+
+
 package logica;
 
 //~--- JDK imports ------------------------------------------------------------
+
 import java.awt.Point;
 
 /**
@@ -37,10 +40,9 @@ import java.awt.Point;
  * @author gadolforl
  */
 public class TrianguladorMinimalVoraz {
-
-    private Celda[][] matrizCostos;
+    private Celda[][]   matrizCostos;
     private boolean[][] matrizCuerdas;
-    private Poligono poligono;
+    private Poligono    poligono;
 
     /**
      * Constructs ...
@@ -50,7 +52,7 @@ public class TrianguladorMinimalVoraz {
      */
     public TrianguladorMinimalVoraz(Poligono poligono) {
         this.poligono = poligono;
-        matrizCostos = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
+        matrizCostos  = new Celda[poligono.getNpoints() - 1][poligono.getNpoints()];
         matrizCuerdas = new boolean[poligono.getNpoints()][poligono.getNpoints()];
 
         for (int i = 0; i < poligono.getNpoints(); i++) {
@@ -95,11 +97,11 @@ public class TrianguladorMinimalVoraz {
             return d;
         } else {
             d = Math.sqrt(
-                    Math.pow(
+                Math.pow(
                     poligono.getCartesianXpoints()[indexVertice1] - poligono.getCartesianXpoints()[indexVertice2],
                     2) + Math.pow(
-                    poligono.getCartesianYpoints()[indexVertice1] - poligono.getCartesianYpoints()[indexVertice2],
-                    2));
+                        poligono.getCartesianYpoints()[indexVertice1] - poligono.getCartesianYpoints()[indexVertice2],
+                        2));
 
             return d;
         }
@@ -122,38 +124,40 @@ public class TrianguladorMinimalVoraz {
             System.out.println("Ya calculado - C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
             return matrizCostos[s - 2][i].getCosto();
-        } // Si no esta se calcula!
-        else {
-            double distanciaMinima=100000000;
-            int kelegante=-1;
+        }                                                                                       // Si no esta se calcula!
+                else {
+            double distanciaMinima = 100000000;
+            int    kelegante       = -1;
+            int    inicio          = 1;
+            int    hasta           = s - 2;
 
-            int inicio=1;
-            int hasta = s-2;
-            if (hasta>1) {
-                hasta = s-3;
+            if (hasta > 1) {
+                hasta = s - 3;
             }
-            if (hasta>2) {
-                inicio=2;
+
+            if (hasta > 2) {
+                inicio = 2;
             }
-            
+
             for (int k = inicio; k <= hasta; k++) {
                 System.out.println("K: " + k);
 
                 double distanciaMinima1 = Distancia(i, i + k) + Distancia(i + k, i + s - 1);    // Revisar
 
                 if (distanciaMinima1 < distanciaMinima) {
-                    distanciaMinima=distanciaMinima1;
-                    kelegante=k;
+                    distanciaMinima = distanciaMinima1;
+                    kelegante       = k;
                 }
             }
-            
-            double costo = calcularTriangulacion(i, kelegante + 1) + calcularTriangulacion(i + kelegante, s - kelegante)
-                        + Distancia(i, i + kelegante) + Distancia(i + kelegante, i + s - 1);    // Revisar
 
-            System.out.println("costo en voraz: "+costo);
-            
+            double costo = calcularTriangulacion(i, kelegante + 1)
+                           + calcularTriangulacion(i + kelegante, s - kelegante) + Distancia(i, i + kelegante)
+                           + Distancia(i + kelegante, i + s - 1);                               // Revisar
+
+            System.out.println("costo en voraz: " + costo);
             matrizCostos[s - 2][i] = new Celda(costo, kelegante);
-//            System.out.println("Recien Calculado C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
+
+//          System.out.println("Recien Calculado C" + i + "" + s + ": " + matrizCostos[s - 2][i].getCosto());
 
             return costo;
         }
@@ -189,6 +193,24 @@ public class TrianguladorMinimalVoraz {
      * Method description
      *
      */
+    public void imprimirMatrizCostos() {
+        System.out.println("Matriz de costos en voraz\n");
+
+        for (int i = 0; i < matrizCostos.length; i++) {
+            for (int j = 0; j < matrizCostos[i].length; j++) {
+                System.out.print(matrizCostos[i][j].getCosto() + "\t");
+            }
+
+            System.out.print("\n");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
+
+    /**
+     * Method description
+     *
+     */
     public void imprimirMatrizDiagonales() {
         for (int i = 0; i < poligono.getNpoints(); i++) {
             for (int j = 0; j < poligono.getNpoints(); j++) {
@@ -199,17 +221,6 @@ public class TrianguladorMinimalVoraz {
         }
     }
 
-    public void imprimirMatrizCostos(){
-        
-        System.out.println("Matriz de costos en voraz\n");
-        for (int i = 0; i < matrizCostos.length; i++) {
-            for (int j = 0; j < matrizCostos[i].length; j++) {
-                System.out.print(matrizCostos[i][j].getCosto()+"\t");
-            }
-            System.out.print("\n");
-        }
-    }
-    // <editor-fold defaultstate="collapsed" desc="GETTERS AND SETTERS">
     /**
      * Get the value of matrizCostos
      *
@@ -247,5 +258,6 @@ public class TrianguladorMinimalVoraz {
     public void setMatrizCuerdas(boolean[][] matrizCuerdas) {
         this.matrizCuerdas = matrizCuerdas;
     }
+
     // </editor-fold>
 }
