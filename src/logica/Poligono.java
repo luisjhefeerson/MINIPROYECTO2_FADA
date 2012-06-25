@@ -9,7 +9,7 @@
 //
 // ARCHIVO: Poligono.java
 //
-// FECHA:  23.06.12
+// FECHA:  24.06.12
 //
 // AUTORES:
 //     Marx Arturo Arias - 0840247-3743
@@ -33,6 +33,7 @@ package logica;
 
 //~--- JDK imports ------------------------------------------------------------
 
+import java.awt.Point;
 import java.awt.Polygon;
 
 import java.io.BufferedReader;
@@ -50,6 +51,7 @@ import java.util.StringTokenizer;
 public class Poligono extends Polygon {
     int[]          cartesianXpoints;
     int[]          cartesianYpoints;
+    double         cx, cy;
     private String textoEnArchivo;
 
     /**
@@ -71,14 +73,33 @@ public class Poligono extends Polygon {
         this.npoints          = npoints;
         this.cartesianXpoints = cartesianXpoints;
         this.cartesianYpoints = cartesianYpoints;
-        convertirPuntosCartesianos();
+        centroCartesiano();
+        convertirPuntosCartesianos(this.cartesianXpoints, this.cartesianYpoints);
     }
 
     /**
      * Method description
      *
      */
-    private void convertirPuntosCartesianos() {
+    private void centroCartesiano() {
+        double xMin = FuncionesAuxiliares.getMinValue(cartesianXpoints);
+        double xMax = FuncionesAuxiliares.getMaxValue(cartesianYpoints);
+        double yMin = FuncionesAuxiliares.getMinValue(cartesianXpoints);
+        double yMax = FuncionesAuxiliares.getMaxValue(cartesianYpoints);
+
+        cx = (xMax + xMin) / 2;
+        cy = (yMax + yMin) / 2;
+        System.out.println("Centro cartesiano: x" + cx + " Y: " + cy);
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param cartesianXpoints
+     * @param cartesianYpoints
+     */
+    private void convertirPuntosCartesianos(int[] cartesianXpoints, int[] cartesianYpoints) {
 
         // Encontrar el Xmin y el Y max
         int xMin = FuncionesAuxiliares.getMinValue(cartesianXpoints);
@@ -86,11 +107,58 @@ public class Poligono extends Polygon {
 
         xpoints = new int[npoints];
         ypoints = new int[npoints];
+        System.out.println("Convirtiendo coordenadas cartesianas a AWT");
 
         for (int i = 0; i < ypoints.length; i++) {
-            ypoints[i] = cartesianXpoints[i] - xMin;
-            xpoints[i] = yMax - cartesianYpoints[i];
+            xpoints[i] = cartesianXpoints[i] - xMin;
+            ypoints[i] = yMax - cartesianYpoints[i];
+            System.out.println("x: " + xpoints[i] + " y: " + ypoints[i]);
         }
+    }
+
+    /**
+     * Method description
+     *
+     *
+     * @param zoom
+     */
+    public void escalarAWT(int zoom) {
+        System.out.println("PUNTOS CON ZOOM:" + zoom);
+
+        int[] copyCartisianX = new int[npoints];
+        int[] copyCartisianY = new int[npoints];
+
+        for (int i = 0; i < npoints; i++) {
+            copyCartisianX[i] = cartesianXpoints[i];
+            copyCartisianY[i] = cartesianYpoints[i];
+
+            // primer cuadrante
+            if ((copyCartisianX[i] > cx) && (copyCartisianY[i] < cy)) {
+                copyCartisianX[i] = copyCartisianX[i] + zoom;
+                copyCartisianY[i] = copyCartisianY[i] - zoom;;
+            }
+
+            // segundo cuadrante
+            if ((copyCartisianX[i] < cx) && (copyCartisianY[i] < cy)) {
+                copyCartisianX[i] = copyCartisianX[i] - zoom;
+                copyCartisianY[i] = copyCartisianY[i] - zoom;;
+            }
+
+            // tercer cuadrante
+            if ((copyCartisianX[i] < cx) && (copyCartisianY[i] > cy)) {
+                copyCartisianX[i] = copyCartisianX[i] - zoom;
+                copyCartisianY[i] = copyCartisianY[i] + zoom;;
+            }
+
+            if ((copyCartisianX[i] > cx) && (copyCartisianY[i] > cy)) {
+                copyCartisianX[i] = copyCartisianX[i] + zoom;
+                copyCartisianY[i] = copyCartisianY[i] + zoom;;
+            }
+
+            System.out.println("x: " + copyCartisianX[i] + " y: " + copyCartisianY[i]);
+        }
+
+        convertirPuntosCartesianos(copyCartisianX, copyCartisianY);
     }
 
     /**
@@ -115,8 +183,8 @@ public class Poligono extends Polygon {
             }
 
             textoEnArchivo = bufer.toString();
+
             return procesarFileContents();
-            
         } catch (IOException ex) {
             System.out.println(ex.toString());
 
@@ -159,7 +227,8 @@ public class Poligono extends Polygon {
                 }
             }
 
-            convertirPuntosCartesianos();
+            convertirPuntosCartesianos(this.cartesianXpoints, this.cartesianYpoints);
+            centroCartesiano();
         } catch (Exception e) {
             System.err.println("no cargo archivo" + e);
 

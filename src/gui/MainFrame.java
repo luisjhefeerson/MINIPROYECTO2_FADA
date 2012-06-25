@@ -44,13 +44,15 @@ import logica.TrianguladorMinimalDinamico;
 public class MainFrame extends javax.swing.JFrame {
 
     private Poligono poligono;
-    private Polygon p;
-    private double cy;
-    private double cx;
-    private Graphics2D g;
+    private PanelGraphiclView jPanelGraphiclView;
 
     public MainFrame() {
+
         initComponents();
+        jPanelGraphiclView = new PanelGraphiclView();
+        jPanelGraphiclView.setLayout(null);
+        jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -69,7 +71,6 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPaneTextView = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
         jScrollPanelGraphView = new javax.swing.JScrollPane();
-        jPanelGraphiclView = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabelTextView1 = new javax.swing.JLabel();
         jButtonDinamico = new javax.swing.JButton();
@@ -142,10 +143,6 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPaneTextView.setBounds(220, 150, 160, 420);
 
         jScrollPanelGraphView.setBackground(new java.awt.Color(242, 240, 240));
-
-        jPanelGraphiclView.setLayout(null);
-        jScrollPanelGraphView.setViewportView(jPanelGraphiclView);
-
         jPanelPrincipal.add(jScrollPanelGraphView);
         jScrollPanelGraphView.setBounds(420, 50, 560, 490);
 
@@ -185,9 +182,8 @@ public class MainFrame extends javax.swing.JFrame {
         jPanelPrincipal.add(jButtonLoad);
         jButtonLoad.setBounds(25, 150, 150, 31);
 
-        jSliderZoom.setMaximum(500);
-        jSliderZoom.setToolTipText("%");
-        jSliderZoom.setValue(100);
+        jSliderZoom.setToolTipText("");
+        jSliderZoom.setValue(20);
         jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderZoomStateChanged(evt);
@@ -302,52 +298,29 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
 
-        double zoom = (double)jSliderZoom.getValue() / 100;
-        System.out.println("zoom: "+zoom);
-//        AffineTransform old = g.getTransform();
-
-        AffineTransform tr2 = AffineTransform.getTranslateInstance(-cx, -cy);
-        AffineTransform tr = AffineTransform.getScaleInstance(zoom, zoom);
-
-        tr.concatenate(tr2);
-        tr2 = tr;
-        tr = AffineTransform.getTranslateInstance(cx, cy);
-        tr.concatenate(tr2);
-        tr2 = tr;
-
-//        tr = new AffineTransform(old);
-//        tr.concatenate(tr2);
-//        tr2 = tr;
-
-        g.setTransform(tr2);
-        g.draw(p);
-//        g.setTransform(old);
-
+        int zoom = jSliderZoom.getValue();
+        System.out.println("zoom: " + zoom);
+        
+        poligono.escalarAWT(zoom);
+        graficarPoligono();
     }//GEN-LAST:event_jSliderZoomStateChanged
 
     private void graficarPoligono() {
 
         //Coordenadas Iniciales para Centrar (Incompleto)
+        System.out.println("Width"+poligono.getBounds().width);
+        System.out.println("Height"+poligono.getBounds().height);
+        
         int initialX = (jPanelGraphiclView.getWidth() - poligono.getBounds().width) / 2;
         int initialY = (jPanelGraphiclView.getHeight() - poligono.getBounds().height) / 2;
 
-
-
-        int[] xPoints = new int[poligono.getNpoints()];
-        int[] yPoints = new int[poligono.getNpoints()];
-
-        for (int i = 0; i < yPoints.length; i++) {
-            yPoints[i] = poligono.getYpoints()[i] + initialY;
-            xPoints[i] = poligono.getXpoints()[i] + initialX;
+        for (int i = 0; i < poligono.getNpoints(); i++) {
+            poligono.getYpoints()[i] = poligono.getYpoints()[i] + initialY;
+            poligono.getXpoints()[i] = poligono.getXpoints()[i] + initialX;
         }
 
-        p = new Polygon(xPoints, yPoints, poligono.getNpoints());
-
-        cx = p.getBounds2D().getCenterX();
-        cy = p.getBounds2D().getCenterY();
-
-        g = (Graphics2D) jPanelGraphiclView.getGraphics();
-        g.drawPolygon(p);
+        jPanelGraphiclView.setPoligono(poligono);
+        jPanelGraphiclView.repaint();
     }
 
     public static void main(String args[]) {
@@ -397,7 +370,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JPanel jPanelGraphiclView;
     private javax.swing.JPanel jPanelPrincipal;
     private javax.swing.JScrollPane jScrollPaneTextView;
     private javax.swing.JScrollPane jScrollPanelGraphView;

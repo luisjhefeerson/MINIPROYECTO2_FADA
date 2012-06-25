@@ -216,14 +216,6 @@
           </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanelGraphiclView">
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-                <Property name="useNullLayout" type="boolean" value="true"/>
-              </Layout>
-            </Container>
-          </SubComponents>
         </Container>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
           <Properties>
@@ -297,9 +289,8 @@
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderZoom">
           <Properties>
-            <Property name="maximum" type="int" value="500"/>
-            <Property name="toolTipText" type="java.lang.String" value="%"/>
-            <Property name="value" type="int" value="100"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="value" type="int" value="20"/>
           </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderZoomStateChanged"/>
