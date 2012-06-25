@@ -30,6 +30,7 @@
 package gui;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import logica.Poligono;
@@ -41,10 +42,12 @@ public class MainFrame extends javax.swing.JFrame {
     private Poligono poligono;
     private PanelGraphiclView jPanelGraphiclView;
     double zoomFactor;
+    private final DecimalFormat df;
 
     public MainFrame() {
 
         initComponents();
+        df = new DecimalFormat("#.#####");
         zoomFactor = 1;
         jPanelGraphiclView = new PanelGraphiclView();
         jPanelGraphiclView.setLayout(null);
@@ -285,8 +288,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jButtonDinamicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamicoActionPerformed
 
+
         TrianguladorMinimalDinamico trianDinamico = new TrianguladorMinimalDinamico(poligono);
-        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianDinamico.calcularTriangulacion(0, poligono.npoints));
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianDinamico.calcularTriangulacion(0, poligono.npoints)));
         trianDinamico.construirSolucionOptima(0, poligono.npoints);
         trianDinamico.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianDinamico.getMatrizCuerdas());
@@ -308,7 +312,7 @@ public class MainFrame extends javax.swing.JFrame {
             if (poligono.loadFromFile(selectedFile)) {
 
                 jTextArea.setText(poligono.getTextoEnArchivo());
-                zoomFactor=1;
+                zoomFactor = 1;
                 graficarPoligono();
                 jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: ");
                 jPanelGraphiclView.setMatrizCuerdas(null);
@@ -325,7 +329,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButtonDinamico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDinamico1ActionPerformed
 
         TrianguladorMinimalVoraz trianVoraz = new TrianguladorMinimalVoraz(poligono);
-        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + trianVoraz.calcularTriangulacion(0, poligono.npoints));
+        jLabelResultado.setText("RESULTADO TRIANGULACION MINIMAL: " + df.format(trianVoraz.calcularTriangulacion(0, poligono.npoints)));
         trianVoraz.construirSolucionOptima(0, poligono.npoints);
         trianVoraz.imprimirMatrizDiagonales();
         jPanelGraphiclView.setMatrizCuerdas(trianVoraz.getMatrizCuerdas());
@@ -337,8 +341,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButtonZoomMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMenosActionPerformed
 
         if (zoomFactor > 1) {
-            zoomFactor-=0.5;
-        } else if (zoomFactor>0){
+            zoomFactor -= 0.5;
+        } else if (zoomFactor > 0) {
             zoomFactor = zoomFactor - 0.1;
         }
         poligono.escalarAWT(zoomFactor);
@@ -349,7 +353,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void jButtonZoomMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonZoomMasActionPerformed
 
         if (zoomFactor >= 1) {
-            zoomFactor+=0.5;
+            zoomFactor += 0.5;
         } else {
             zoomFactor = zoomFactor + 0.1;
         }

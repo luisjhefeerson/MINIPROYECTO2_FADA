@@ -131,6 +131,7 @@ public class TrianguladorMinimalVoraz {
             int    inicio          = 1;
             int    hasta           = s - 2;
 
+            // Heuristica
             if (hasta > 1) {
                 hasta = s - 3;
             }
