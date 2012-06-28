@@ -108,7 +108,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator2);
-        jSeparator2.setBounds(400, 0, 6, 600);
+        jSeparator2.setBounds(400, 0, 2, 600);
 
         jLabelTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -124,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabelSubtitulo1.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N
         jLabelSubtitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSubtitulo1.setText("TRIANGULACIÓN DE POLINOMIOS");
+        jLabelSubtitulo1.setText("TRIANGULACIÓN DE POLIGONOS");
         jPanelPrincipal.add(jLabelSubtitulo1);
         jLabelSubtitulo1.setBounds(70, 55, 330, 30);
 
@@ -156,7 +156,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanelPrincipal.add(jSeparator3);
-        jSeparator3.setBounds(200, 100, 6, 500);
+        jSeparator3.setBounds(200, 100, 2, 500);
 
         jLabelTextView1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabelTextView1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

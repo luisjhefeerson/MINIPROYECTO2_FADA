@@ -146,7 +146,7 @@
               <Font name="Trebuchet MS" size="20" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="TRIANGULACI&#xd3;N DE POLINOMIOS"/>
+            <Property name="text" type="java.lang.String" value="TRIANGULACI&#xd3;N DE POLIGONOS"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
